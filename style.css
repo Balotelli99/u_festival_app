@@ -1,0 +1,138 @@
+/* 1. VARIABELEN & BASIS */
+:root {
+    --accent: #F03228;    /* Vermilion (Knoppen) */
+    --base: #FFFFFF;      /* White */
+    --primary: #000000;   /* Black */
+    --secondary: #247BA0; /* Cerulean (Kopteksten) */
+    --info: #E3B505;      /* Saffron (Informatie) */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Sansation', sans-serif;
+    font-weight: 400; /* Regular */
+    background-color: var(--base);
+    color: var(--primary);
+    padding-bottom: 80px;
+}
+
+/* 2. TYPOGRAFIE */
+h1, h2, h3 { font-weight: 700; color: var(--secondary); }
+.sec-title { padding: 20px 0 10px 20px; font-size: 1.8rem; }
+p { font-weight: 400; }
+label { font-weight: 300; font-style: italic; }
+
+/* 3. NAVIGATIE LOGICA (Zonder JS) */
+input[type="radio"] { display: none; }
+.page { display: none; min-height: 80vh; }
+
+#btn-home:checked ~ .content-container #page-home { display: block; }
+#btn-info:checked ~ .content-container #page-info { display: block; }
+#btn-schedule:checked ~ .content-container #page-schedule { display: block; }
+#btn-map:checked ~ .content-container #page-map { display: block; }
+
+/* 4. HEADER CONTAINER */
+.main-header {
+    background-color: var(--primary);
+    color: var(--base);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* 5. BLOKJES & CONTAINERS */
+.news-block {
+    background: #f4f4f4;
+    margin: 10px 20px;
+    padding: 20px;
+    border-radius: 10px; /* Minimaal afgerond */
+}
+
+/* Accordion (Info) */
+.accordion {
+    background: var(--info);
+    margin: 10px 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+summary {
+    padding: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--primary);
+}
+.acc-content {
+    background: white;
+    padding: 15px;
+    color: var(--primary);
+}
+
+/* Schedule Container */
+.schedule-item {
+    display: flex;
+    background: var(--base);
+    border-bottom: 1px solid #eee;
+    margin: 0 20px;
+}
+.time {
+    padding: 20px;
+    background: var(--secondary);
+    color: white;
+    font-weight: 700;
+    min-width: 80px;
+}
+.act { padding: 20px; }
+
+/* 6. FOOTER NAVIGATIE */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background: var(--accent);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bottom-nav label {
+    color: var(--base);
+    text-align: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+    flex: 1;
+}
+
+.bottom-nav label span {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+/* Actieve knop kleur */
+#btn-home:checked ~ .bottom-nav label[for="btn-home"],
+#btn-info:checked ~ .bottom-nav label[for="btn-info"],
+#btn-schedule:checked ~ .bottom-nav label[for="btn-schedule"],
+#btn-map:checked ~ .bottom-nav label[for="btn-map"] {
+    background: rgba(0,0,0,0.2);
+    height: 100%;
+    padding-top: 12px;
+}
+
+/* Kaart Placeholder */
+.map-placeholder {
+    height: 300px;
+    margin: 20px;
+    background: #e0e0e0;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--secondary);
+}
