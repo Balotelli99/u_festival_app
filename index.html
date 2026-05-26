@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>U Festival</title>
+    <title>❤️U Festival</title>
+    <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Sansation:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,72 +16,68 @@
     <input type="radio" name="nav" id="btn-map">
 
     <header class="main-header">
-        <div class="logo">U FESTIVAL</div>
+        <div class="logo">❤️U FESTIVAL</div>
         <div class="top-controls">
-            <span class="lang-icon">🇳🇱</span> </div>
+            <button id="theme-btn">🌙</button>
+            <button id="lang-btn">🇳🇱</button>
+        </div>
     </header>
 
     <main class="content-container">
 
         <section class="page" id="page-home">
-            <h1 class="sec-title">Nieuws</h1>
+            <h1 class="sec-title" id="t-home">Nieuws</h1>
             <div class="news-block">
-                <h3>Welkom bij U!</h3>
+                <h3>Welkom bij ❤️U!</h3>
                 <p>De eerste meldingen verschijnen hier tijdens het festival.</p>
-            </div>
-            <div class="news-block">
-                <h3>Check de line-up</h3>
-                <p>Armin van Buuren en Martin Garrix zijn bevestigd!</p>
             </div>
         </section>
 
         <section class="page" id="page-info">
-            <h1 class="sec-title">Informatie</h1>
-            
+            <h1 class="sec-title" id="t-info">Informatie</h1>
             <details class="accordion">
                 <summary>Bereikbaarheid</summary>
                 <div class="acc-content">
-                    <p><strong>Shuttlebus:</strong> Gratis vanaf Utrecht Centraal (Mineurslaan). Rijdt van 12:00 - 19:00 en na 21:00.</p>
-                    <p><strong>Fiets:</strong> Grote gratis stalling bij Strijkviertel.</p>
+                    <p>Shuttlebus vanaf Utrecht Centraal rijdt gratis heen en weer.</p>
                 </div>
             </details>
-
             <details class="accordion">
-                <summary>FAQ - Medicatie</summary>
+                <summary>Golden-GLU</summary>
                 <div class="acc-content">
-                    <p>Medicijnen zijn toegestaan met een doktersverklaring.</p>
+                    <p>GLU studenten krijgen een gouden bandje voor snellere rijen!</p>
                 </div>
             </details>
         </section>
 
         <section class="page" id="page-schedule">
-            <h1 class="sec-title">Programma</h1>
+            <h1 class="sec-title" id="t-sched">Programma</h1>
             <div class="schedule-item">
                 <div class="time">12:00</div>
-                <div class="act"><strong>Armin van Buuren</strong><br>Trance Icon</div>
+                <div class="act"><strong>Armin van Buuren</strong><br>Mainstage</div>
             </div>
             <div class="schedule-item">
                 <div class="time">14:00</div>
-                <div class="act"><strong>Martin Garrix</strong><br>EDM Superstar</div>
+                <div class="act"><strong>Martin Garrix</strong><br>Mainstage</div>
             </div>
         </section>
 
         <section class="page" id="page-map">
-            <h1 class="sec-title">Plattegrond</h1>
+            <h1 class="sec-title" id="t-map">Plattegrond</h1>
             <div class="map-placeholder">
                 <p>Locatie: Strijkviertel, Utrecht</p>
-                <p class="gps-msg">GPS wordt geladen...</p>
+                <p id="gps-status">GPS Locatie laden...</p>
             </div>
         </section>
 
     </main>
 
     <nav class="bottom-nav">
-        <label for="btn-home"><span>home</span>Home</label>
-        <label for="btn-info"><span>info</span>Info</label>
-        <label for="btn-schedule"><span>event</span>Schedule</label>
-        <label for="btn-map"><span>map</span>Map</label>
+        <label for="btn-home">Home</label>
+        <label for="btn-info">Info</label>
+        <label for="btn-schedule">Programma</label>
+        <label for="btn-map">Kaart</label>
     </nav>
 
+    <script src="app.js"></script>
 </body>
 </html>

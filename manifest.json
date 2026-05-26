@@ -1,0 +1,15 @@
+{
+  "name": "❤️U Festival 2026",
+  "short_name": "❤️U Fest",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#F03228",
+  "icons": [
+    {
+      "src": "https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/festival/default/512px.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

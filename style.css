@@ -7,6 +7,12 @@
     --info: #E3B505;      /* Saffron (Informatie) */
 }
 
+/* Dark Mode overschrijving van de variabelen */
+body.dark-mode {
+    --base: #121212;
+    --primary: #FFFFFF;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -45,12 +51,28 @@ input[type="radio"] { display: none; }
     z-index: 100;
 }
 
+/* Knoppen in de header */
+#theme-btn, #lang-btn {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 /* 5. BLOKJES & CONTAINERS */
-.news-block {
+.card, .news-block {
     background: #f4f4f4;
     margin: 10px 20px;
     padding: 20px;
     border-radius: 10px; /* Minimaal afgerond */
+}
+
+/* Aanpassing voor blokjes in Dark Mode */
+body.dark-mode .card, 
+body.dark-mode .news-block {
+    background: #222222;
+    color: #FFFFFF;
 }
 
 /* Accordion (Info) */
@@ -71,6 +93,11 @@ summary {
     padding: 15px;
     color: var(--primary);
 }
+/* Aanpassing voor accordion inhoud in Dark Mode */
+body.dark-mode .acc-content {
+    background: #333333;
+    color: #FFFFFF;
+}
 
 /* Schedule Container */
 .schedule-item {
@@ -78,6 +105,9 @@ summary {
     background: var(--base);
     border-bottom: 1px solid #eee;
     margin: 0 20px;
+}
+body.dark-mode .schedule-item {
+    border-bottom: 1px solid #333;
 }
 .time {
     padding: 20px;
@@ -103,25 +133,20 @@ summary {
 .bottom-nav label {
     color: var(--base);
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     cursor: pointer;
     flex: 1;
+    line-height: 70px; /* Zorgt dat de tekst netjes verticaal centreert */
 }
 
-.bottom-nav label span {
-    display: block;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-/* Actieve knop kleur */
+/* Actieve knop styling */
 #btn-home:checked ~ .bottom-nav label[for="btn-home"],
 #btn-info:checked ~ .bottom-nav label[for="btn-info"],
 #btn-schedule:checked ~ .bottom-nav label[for="btn-schedule"],
 #btn-map:checked ~ .bottom-nav label[for="btn-map"] {
     background: rgba(0,0,0,0.2);
+    font-weight: 700;
     height: 100%;
-    padding-top: 12px;
 }
 
 /* Kaart Placeholder */
@@ -135,4 +160,7 @@ summary {
     justify-content: center;
     align-items: center;
     border: 2px solid var(--secondary);
+}
+body.dark-mode .map-placeholder {
+    background: #222222;
 }
