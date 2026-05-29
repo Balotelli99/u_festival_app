@@ -5,6 +5,9 @@ GEMENI
 Maak een samenvatting van de opdracht
 Maak een kleine begin en hou de code simpel
 
-13 september
-mei
+13 mei
+
+27 mei info panel uitbreider
+
+29 mei geef de rode kleur w
 

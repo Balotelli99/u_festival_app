@@ -117,42 +117,16 @@
         </section>
 
         <section class="page" id="page-schedule">
-            <h1 class="sec-title" id="t-sched">Programma</h1>
-            <div class="news-block">
-                <img src="fotos/image (6).png" alt="Armin van Buuren" class="news-img">
-                <div class="news-content">
-                    <h3><a href="#" class="artist-link" data-artist="armin">Armin van Buuren</a></h3>
-                    <p>Mainstage | 12:00 - 14:00</p>
-                </div>
-            </div>
-            <div class="news-block">
-                <img src="fotos/image (7).png" alt="Martin Garrix" class="news-img">
-                <div class="news-content">
-                    <h3><a href="#" class="artist-link" data-artist="martingarrix">Martin Garrix</a></h3>
-                    <p>Mainstage | 14:00 - 16:00</p>
-                </div>
-            </div>
-            <div class="news-block">
-                <img src="fotos/image (8).png" alt="Hardwell" class="news-img">
-                <div class="news-content">
-                    <h3><a href="#" class="artist-link" data-artist="hardwell">Hardwell</a></h3>
-                    <p>Mainstage | 16:00 - 18:00</p>
-                </div>
-            </div>
-            <div class="news-block">
-                <img src="fotos/image (9).png" alt="Nicky Romero" class="news-img">
-                <div class="news-content">
-                    <h3><a href="#" class="artist-link" data-artist="nickyromero">Nicky Romero</a></h3>
-                    <p>Mainstage | 18:00 - 20:00</p>
-                </div>
-            </div>
-            <div class="news-block">
-                <img src="fotos/image (10).png" alt="W&W" class="news-img">
-                <div class="news-content">
-                    <h3><a href="#" class="artist-link" data-artist="ww">W&W</a></h3>
-                    <p>Mainstage | 20:00 - 22:00</p>
-                </div>
-            </div>
+             <h1 class="sec-title" id="t-sched">Programma</h1>
+             
+             <div class="day-switcher">
+                 <button class="day-btn active">Zaterdag</button>
+                 <button class="day-btn">Zondag</button>
+             </div>
+
+             <div class="schedule-grid-container">
+                 <div class="schedule-grid" id="schedule-grid"></div>
+             </div>
         </section>
 
         <section class="page" id="page-artist-info" style="display:none;">
@@ -161,7 +135,7 @@
                 <img src="" alt="" id="artist-img" class="news-img">
             </div>
             <div class="news-block">
-                <h2 id="artist-name"></h2>
+                <h2 id="artist-name-display"></h2>
                 <p id="artist-desc"></p>
             </div>
             <button id="back-to-schedule" class="back-btn">Terug</button>

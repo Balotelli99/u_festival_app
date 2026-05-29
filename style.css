@@ -1,25 +1,25 @@
 /* 1. VARIABELEN & BASIS */
 :root {
-    --accent: #F03228;    /* Vermilion (Knoppen) */
-    --base: #FFFFFF;      /* White */
-    --primary: #000000;   /* Black */
-    --secondary: #247BA0; /* Cerulean (Kopteksten) */
-    --info: #E3B505;      /* Saffron (Informatie) */
+    --accent: #F03228;    /* Vermilion (Knoppen/Header) */
+    --base: #FFFFFF;      /* Wit */
+    --primary: #000000;   /* Zwart */
+    --secondary: #247BA0; /* Cerulean */
+    --info: #E3B505;      /* Saffron (Favorieten) */
+    --grid-border: #A1C4D4; /* Lichtblauwe randen uit afbeelding */
 }
 
-/* Dark Mode overschrijving van de variabelen */
 body.dark-mode {
     --base: #121212;
     --primary: #FFFFFF;
+    --secondary: #0D47A1;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: 'Sansation', sans-serif;
-    font-weight: 400; /* Regular */
-    /* background-color: var(--base) */
-    background-color: rgb(251, 255, 251);
+    font-weight: 400;
+    background-color: var(--base);
     color: var(--primary);
     padding-bottom: 80px;
 }
@@ -40,15 +40,11 @@ input[type="radio"] { display: none; }
 #btn-schedule:checked ~ .content-container #page-schedule { display: block; }
 #btn-map:checked ~ .content-container #page-map { display: block; }
 
-/* News detail page */
-#page-news-detail {
-    display: none;
-    min-height: 80vh;
-}
+#page-news-detail { display: none; min-height: 80vh; }
 
 /* 4. HEADER CONTAINER */
 .main-header {
-    background-color: RED;
+    background-color: var(--accent);
     color: var(--base);
     padding: 20px;
     display: flex;
@@ -59,7 +55,8 @@ input[type="radio"] { display: none; }
     z-index: 100;
 }
 
-/* Knoppen in de header */
+body.dark-mode .main-header { background-color: var(--secondary); }
+
 #theme-btn, #lang-btn {
     background: none;
     border: none;
@@ -68,20 +65,14 @@ input[type="radio"] { display: none; }
     margin-left: 10px;
 }
 
-/* 5. BLOKJES & CONTAINERS */
-.card {
+/* 5. BLOKJES & ACCORDIONS */
+.card, .news-block {
     background: #f4f4f4;
     margin: 10px 20px;
-    padding: 20px;
-    border-radius: 10px;
-}
-.news-block {
-    background: #f4f4f4;
-    margin: 10px 20px;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
     display: flex;
-    gap: 10px;
+    gap: 15px;
     align-items: flex-start;
 }
 .news-block img.news-img {
@@ -91,48 +82,22 @@ input[type="radio"] { display: none; }
     border-radius: 6px;
     flex-shrink: 0;
 }
-.news-content {
-    flex: 1;
-    padding: 0;
-}
+.news-content { flex: 1; padding: 0; }
 
-/* Aanpassing voor blokjes in Dark Mode */
-body.dark-mode .card, 
-body.dark-mode .news-block {
+body.dark-mode .card, body.dark-mode .news-block {
     background: #222222;
     color: #FFFFFF;
 }
 
-/* Accordion (Info) */
 .accordion {
     background: var(--info);
     margin: 10px 20px;
     border-radius: 8px;
     overflow: hidden;
 }
-summary {
-    padding: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    color: var(--primary);
-}
-.acc-content {
-    background: white;
-    padding: 15px;
-    color: var(--primary);
-}
-
-/* Artist link styling */
-.artist-link {
-    color: var(--accent);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Back button */
-.clickable-news {
-    cursor: pointer;
-}
+summary { padding: 15px; font-weight: 700; cursor: pointer; color: #000; }
+.acc-content { background: white; padding: 15px; color: var(--primary); }
+body.dark-mode .acc-content { background: #333333; color: #FFFFFF; }
 
 .back-btn {
     background: var(--accent);
@@ -144,74 +109,141 @@ summary {
     font-weight: 700;
     cursor: pointer;
 }
-/* Aanpassing voor accordion inhoud in Dark Mode */
-body.dark-mode .acc-content {
-    background: #333333;
-    color: #FFFFFF;
-}
 
-/* Schedule Container */
-.schedule-item {
+/* 6. DAY SWITCHER (Boven programma) */
+.day-switcher {
     display: flex;
-    background: var(--base);
-    border-bottom: 1px solid #eee;
-    margin: 0 20px;
+    margin: 10px 20px 20px 20px;
+    border: 2px solid var(--grid-border);
+    border-radius: 10px;
+    overflow: hidden;
 }
-body.dark-mode .schedule-item {
-    border-bottom: 1px solid #333;
-}
-.time {
-    padding: 20px;
-    background: var(--secondary);
-    color: white;
-    font-weight: 700;
-    min-width: 80px;
-}
-.act { padding: 20px; }
-
-/* 6. FOOTER NAVIGATIE */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 70px;
-    background: var(--accent);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.bottom-nav label {
-    color: var(--base);
-    text-align: center;
-    font-size: 0.9rem;
-    cursor: pointer;
+.day-btn {
     flex: 1;
-    line-height: 70px; /* Zorgt dat de tekst netjes verticaal centreert */
+    padding: 15px;
+    border: none;
+    background: #FFFFFF;
+    font-size: 1.1rem;
+    font-style: italic;
+    cursor: pointer;
+    color: #333;
 }
-
-/* Actieve knop styling */
-#btn-home:checked ~ .bottom-nav label[for="btn-home"],
-#btn-info:checked ~ .bottom-nav label[for="btn-info"],
-#btn-schedule:checked ~ .bottom-nav label[for="btn-schedule"],
-#btn-map:checked ~ .bottom-nav label[for="btn-map"] {
-    background: rgba(0,0,0,0.2);
+.day-btn.active {
+    background: var(--accent);
+    color: #FFFFFF;
     font-weight: 700;
-    height: 100%;
 }
 
-/* Kaart Placeholder */
-.map-placeholder {
-    height: 300px;
-    margin: 20px;
-    background: #e0e0e0;
-    border-radius: 15px;
+/* 7. PROGRAMMA GRID (Exact zoals afbeelding) */
+.schedule-grid-container {
+    margin: 0 20px;
+    overflow: auto;
+    border: 2px solid var(--grid-border);
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    max-height: 65vh;
+}
+
+.schedule-grid {
+    display: grid;
+    position: relative;
+}
+
+.time-header {
+    background: #FFFFFF;
+    color: #000000;
+    font-weight: 400;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--grid-border);
+    border-bottom: 2px solid var(--grid-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.stage-header {
+    background: #FFFFFF;
+    color: #1A5B7A;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid var(--grid-border);
+    border-bottom: 1px solid var(--grid-border);
+}
+
+.stage-sticky { position: sticky; left: 0; z-index: 9; }
+.corner-sticky {
+    position: sticky; top: 0; left: 0; z-index: 11;
+    border-right: 2px solid var(--grid-border);
+    border-bottom: 2px solid var(--grid-border);
+    color: #1A5B7A;
+}
+
+/* Artist blokken (Donkerblauw uit afbeelding) */
+.schedule-block {
+    background: #1A5B7A; 
+    color: #FFFFFF;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 3px 5px;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.artist-name { font-weight: 700; font-size: 0.85rem; }
+.artist-time { font-size: 0.75rem; opacity: 0.9; margin-top: 4px; }
+
+/* Grid achtergrondlijnen */
+.grid-empty-cell {
+    border-right: 1px solid #E2eff5;
+    border-bottom: 1px solid #E2eff5;
+    pointer-events: none;
+}
+
+/* Gemarkeerde favoriet */
+.schedule-block.favorite {
+    background: var(--info) !important;
+    color: #000000;
+}
+
+/* 8. FOOTER NAVIGATIE */
+.bottom-nav {
+    position: fixed; bottom: 0; width: 100%; height: 70px;
+    background: var(--accent);
+    display: flex; justify-content: space-around; align-items: center;
+    z-index: 110;
+}
+.bottom-nav label {
+    color: var(--base); text-align: center; font-size: 0.9rem;
+    cursor: pointer; flex: 1; line-height: 70px;
+}
+#btn-home:checked ~ .bottom-nav label[for="btn-home"],
+#btn-info:checked ~ .bottom-nav label[for="btn-info"],
+#btn-schedule:checked ~ .bottom-nav label[for="btn-schedule"],
+#btn-map:checked ~ .bottom-nav label[for="btn-map"] {
+    background: rgba(0,0,0,0.2); font-weight: 700; height: 100%;
+}
+
+/* KAART & DARK MODE */
+.map-placeholder {
+    height: 300px; margin: 20px; background: #e0e0e0; border-radius: 15px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
     border: 2px solid var(--secondary);
 }
-body.dark-mode .map-placeholder {
-    background: #222222;
+
+body.dark-mode .schedule-grid-container,
+body.dark-mode .time-header,
+body.dark-mode .stage-header {
+    background-color: #1e1e1e; color: #ffffff; border-color: #444;
 }
+body.dark-mode .grid-empty-cell { border-color: #333; }
