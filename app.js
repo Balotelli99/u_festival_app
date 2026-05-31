@@ -76,34 +76,87 @@ document.querySelectorAll('.clickable-news').forEach(item => {
     });
 });
 
+document.getElementById('back-to-schedule').addEventListener('click', () => {
+    document.getElementById('page-artist-info').style.display = 'none';
+    document.getElementById('page-schedule').style.display = 'block';
+});
+
 document.getElementById('back-to-home').addEventListener('click', () => {
     document.getElementById('page-news-detail').style.display = 'none';
     document.getElementById('page-home').style.display = 'block';
 });
 
 // 6. Schedule Grid Data (Gekoppeld aan de afbeelding)
-const scheduleData = [
-    { start: '10:00', end: '11:00', artist: 'Armin van Buuren', stage: 'Pôton' },
-    { start: '12:00', end: '13:00', artist: 'Kensington', stage: 'Pôton' },
-    { start: '14:00', end: '15:00', artist: 'De Staat', stage: 'Pôton' },
-    
-    { start: '10:00', end: '11:00', artist: 'Talent set 1', stage: 'The Lake' },
-    { start: '11:00', end: '12:00', artist: 'Talent set 2', stage: 'The Lake' },
-    { start: '12:30', end: '13:30', artist: 'Talent set 3', stage: 'The Lake' },
-    { start: '14:00', end: '15:00', artist: 'Talent set 4', stage: 'The Lake' },
-    
-    { start: '10:30', end: '11:30', artist: 'Comedy', stage: 'The Club' },
-    { start: '12:00', end: '13:00', artist: 'Lecture', stage: 'The Club' },
-    { start: '13:45', end: '14:45', artist: 'Theater', stage: 'The Club' }
-];
+const scheduleData = {
+    zaterdag: [
+        { start: '10:00', end: '11:00', artist: 'Armin van Buuren', stage: 'Pôton' },
+        { start: '12:00', end: '13:00', artist: 'Kensington', stage: 'Pôton' },
+        { start: '14:00', end: '15:00', artist: 'De Staat', stage: 'Pôton' },
+        { start: '17:45', end: '19:00', artist: 'Navarone', stage: 'Pôton' },
+        { start: '19:15', end: '20:45', artist: 'Dotan', stage: 'Pôton' },
+        { start: '22:15', end: '23:45', artist: 'Froukje', stage: 'Pôton' },
+        
+        { start: '10:00', end: '11:00', artist: 'Talent set 1', stage: 'The Lake' },
+        { start: '11:15', end: '12:15', artist: 'Talent set 2', stage: 'The Lake' },
+        { start: '12:45', end: '13:45', artist: 'Talent set 3', stage: 'The Lake' },
+        { start: '14:30', end: '15:30', artist: 'Talent set 4', stage: 'The Lake' },
+        { start: '16:00', end: '17:00', artist: 'Talent set 5', stage: 'The Lake' },
+        { start: '18:00', end: '19:00', artist: 'Talent set 6', stage: 'The Lake' },
+        { start: '21:00', end: '22:00', artist: 'Talent set 7', stage: 'The Lake' },
+        
+        { start: '10:30', end: '11:30', artist: 'Comedy', stage: 'The Club' },
+        { start: '12:00', end: '13:00', artist: 'Lecture', stage: 'The Club' },
+        { start: '13:45', end: '14:45', artist: 'Theater', stage: 'The Club' },
+        { start: '15:15', end: '16:15', artist: 'Movie', stage: 'The Club' },
+        { start: '20:00', end: '21:30', artist: 'Performance', stage: 'The Club' },
+        { start: '22:15', end: '23:45', artist: 'Illusionist', stage: 'The Club' },
+        
+        { start: '10:00', end: '11:45', artist: 'DJ set 1', stage: 'Hanggar' },
+        { start: '11:45', end: '13:30', artist: 'DJ set 2', stage: 'Hanggar' },
+        { start: '13:30', end: '15:15', artist: 'DJ set 3', stage: 'Hanggar' },
+        { start: '15:15', end: '17:00', artist: 'DJ set 4', stage: 'Hanggar' },
+        { start: '17:00', end: '18:45', artist: 'DJ set 5', stage: 'Hanggar' },
+        { start: '18:45', end: '20:30', artist: 'DJ set 6', stage: 'Hanggar' },
+        { start: '20:30', end: '22:15', artist: 'DJ set 7', stage: 'Hanggar' },
+        { start: '22:15', end: '23:45', artist: 'DJ set 8', stage: 'Hanggar' }
+    ],
+    zondag: [
+        { start: '11:00', end: '13:00', artist: 'Martin Garrix', stage: 'Pôton' },
+        { start: '14:00', end: '15:30', artist: 'Within Temptation', stage: 'Pôton' },
+        { start: '16:15', end: '17:30', artist: 'Chef\'Special', stage: 'Pôton' },
+        { start: '18:45', end: '20:15', artist: 'Eefje de Visser', stage: 'Pôton' },
+        { start: '21:30', end: '23:45', artist: 'Spinvis', stage: 'Pôton' },
+        
+        { start: '10:00', end: '11:00', artist: 'Talent set 1', stage: 'The Lake' },
+        { start: '11:15', end: '12:15', artist: 'Talent set 2', stage: 'The Lake' },
+        { start: '12:45', end: '13:45', artist: 'Talent set 3', stage: 'The Lake' },
+        { start: '14:15', end: '15:15', artist: 'Talent set 4', stage: 'The Lake' },
+        { start: '16:00', end: '17:00', artist: 'Talent set 5', stage: 'The Lake' },
+        { start: '18:00', end: '19:00', artist: 'Talent set 6', stage: 'The Lake' },
+        
+        { start: '11:00', end: '12:00', artist: 'Comedy', stage: 'The Club' },
+        { start: '12:30', end: '13:30', artist: 'Lecture', stage: 'The Club' },
+        { start: '14:00', end: '15:00', artist: 'Theater', stage: 'The Club' },
+        { start: '16:00', end: '17:00', artist: 'Movie', stage: 'The Club' },
+        { start: '19:00', end: '20:30', artist: 'Magic Show', stage: 'The Club' },
+        
+        { start: '10:00', end: '11:45', artist: 'DJ set 1', stage: 'Hanggar' },
+        { start: '11:45', end: '13:30', artist: 'DJ set 2', stage: 'Hanggar' },
+        { start: '13:30', end: '15:15', artist: 'DJ set 3', stage: 'Hanggar' },
+        { start: '15:15', end: '17:00', artist: 'DJ set 4', stage: 'Hanggar' },
+        { start: '17:00', end: '18:45', artist: 'DJ set 5', stage: 'Hanggar' },
+        { start: '18:45', end: '20:30', artist: 'DJ set 6', stage: 'Hanggar' },
+        { start: '20:30', end: '22:15', artist: 'DJ set 7', stage: 'Hanggar' },
+        { start: '22:15', end: '23:45', artist: 'DJ set 8', stage: 'Hanggar' }
+    ]
+};
 
-// Tijdsblokken genereren per 15 minuten (10:00 t/m 15:00)
 function generateTimeSlots() {
     const slots = [];
     let hour = 10;
     let min = 0;
     
-    while (hour < 15 || (hour === 15 && min === 0)) {
+    while (hour < 23 || (hour === 23 && min <= 45)) {
         let hStr = hour.toString().padStart(2, '0');
         let mStr = min.toString().padStart(2, '0');
         slots.push(`${hStr}:${mStr}`);
@@ -122,24 +175,60 @@ function timeToMinutes(timeStr) {
     return h * 60 + m;
 }
 
+const artistDetails = {
+    'Armin van Buuren': { img: 'fotos/image (1).png', desc: 'Wereldberoemde DJ en producent, bekend om zijn energieke sets en epische trance tracks.' },
+    'Kensington': { img: 'fotos/image (2).png', desc: 'Nederlandse rockband die met hun emotionele nummers en krachtige optredens het publiek meesleuren.' },
+    'De Staat': { img: 'fotos/image (3).png', desc: 'Indrukwekkende rockband met energieke shows en een herkenbare sound.' },
+    'Navarone': { img: 'fotos/image (3).png', desc: 'Nederlands rockensemble met een unieke mix van alternatieve rock en melodische hooks.' },
+    'Dotan': { img: 'fotos/image (4).png', desc: 'Singer-songwriter bekend om zijn warme, meeslepende pop-folk nummers.' },
+    'Froukje': { img: 'fotos/image (4).png', desc: 'Popartieste met frisse energie en Nederlandstalige hits.' },
+    'Martin Garrix': { img: 'fotos/image (1).png', desc: 'Internationale top-DJ met grote dancehits en spectaculaire liveshows.' },
+    'Within Temptation': { img: 'fotos/image (2).png', desc: 'Symfonische metalband die grote podia weet te vullen met emotie en drama.' },
+    'Chef\'Special': { img: 'fotos/image (5).png', desc: 'Verrassende live band met een mix van pop, rock, hiphop en reggae.' },
+    'Eefje de Visser': { img: 'fotos/image (5).png', desc: 'Nederlands singer-songwriter met sfeervolle, gevoelige popmuziek.' },
+    'Spinvis': { img: 'fotos/image (5).png', desc: 'Poëtische singer-songwriter met unieke, verhalende songs.' },
+    'Talent set 1': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Talent set 2': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Talent set 3': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Talent set 4': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Talent set 5': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Talent set 6': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Talent set 7': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Comedy': { img: 'fotos/image (5).png', desc: 'Lachgarantie met een scherpe blik op het leven en onvergetelijke sketches.' },
+    'Lecture': { img: 'fotos/image (5).png', desc: 'Inspirerende spreker die diepe gedachten deelt over actuele onderwerpen.' },
+    'Theater': { img: 'fotos/image (5).png', desc: 'Indrukwekkend theater dat je meeneemt naar een wereld van verbeelding en emotie.' },
+    'Movie': { img: 'fotos/image (5).png', desc: 'Een filmvertoning op het festival met een speciale sfeer en grote scherm.' },
+    'Performance': { img: 'fotos/image (5).png', desc: 'Een unieke podiumshow met artiesten en verrassende acts.' },
+    'Illusionist': { img: 'fotos/image (5).png', desc: 'Magic en illusie die je blijven verbazen.' },
+    'Magic Show': { img: 'fotos/image (5).png', desc: 'Een magische show vol illusionisme en theater.' },
+    'DJ set 1': { img: 'fotos/image (1).png', desc: 'Een energieke DJ-set met verschillende hits en beats.' },
+    'DJ set 2': { img: 'fotos/image (2).png', desc: 'Een DJ-set met dynamische festivalmuziek en dansbare klanken.' },
+    'DJ set 3': { img: 'fotos/image (3).png', desc: 'Een DJ-set vol house, techno en feelgood vibes.' },
+    'DJ set 4': { img: 'fotos/image (4).png', desc: 'Een DJ-set met sfeervolle beats voor de avond.' },
+    'DJ set 5': { img: 'fotos/image (4).png', desc: 'Een DJ-set met energie en dansmuziek.' },
+    'DJ set 6': { img: 'fotos/image (4).png', desc: 'Een DJ-set met clubklassiekers en moderne tracks.' },
+    'DJ set 7': { img: 'fotos/image (4).png', desc: 'Een DJ-set met euforische festivalhits.' },
+    'DJ set 8': { img: 'fotos/image (4).png', desc: 'Een DJ-set die de avond afsluit met knallende muziek.' }
+};
+
+let activeDay = 'zaterdag';
+
 function initScheduleGrid() {
     const grid = document.getElementById('schedule-grid');
     grid.innerHTML = '';
     
     const timeSlots = generateTimeSlots();
-    const stages = ['Pôton', 'The Lake', 'The Club'];
+    const stages = ['Pôton', 'The Lake', 'The Club', 'Hanggar'];
+    const schedule = scheduleData[activeDay];
     
-    // Grid-indeling configureren
-    grid.style.gridTemplateColumns = `100px repeat(${timeSlots.length}, 85px)`;
-    grid.style.gridTemplateRows = `45px repeat(${stages.length}, 90px)`;
+    grid.style.gridTemplateColumns = `90px repeat(${timeSlots.length}, 60px)`;
+    grid.style.gridTemplateRows = `40px repeat(${stages.length}, 70px)`;
     
-    // Links-boven cel: "Locatie"
     const corner = document.createElement('div');
     corner.className = 'stage-header corner-sticky';
     corner.textContent = 'Locatie';
     grid.appendChild(corner);
     
-    // Tijd headers aanmaken
     timeSlots.forEach(time => {
         const div = document.createElement('div');
         div.className = 'time-header';
@@ -147,11 +236,8 @@ function initScheduleGrid() {
         grid.appendChild(div);
     });
     
-    // Rijen bouwen per stage
     stages.forEach((stage, stageIndex) => {
-        const gridRow = stageIndex + 2; 
-        
-        // Stage naam (Sticky links)
+        const gridRow = stageIndex + 2;
         const stageDiv = document.createElement('div');
         stageDiv.className = 'stage-header stage-sticky';
         stageDiv.style.gridRow = gridRow;
@@ -159,14 +245,12 @@ function initScheduleGrid() {
         stageDiv.textContent = stage;
         grid.appendChild(stageDiv);
         
-        const stageActs = scheduleData.filter(a => a.stage === stage);
+        const stageActs = schedule.filter(a => a.stage === stage);
         
-        // Blokken plaatsen
         stageActs.forEach(act => {
             const startMin = timeToMinutes(act.start);
             const endMin = timeToMinutes(act.end);
             const baseMin = timeToMinutes('10:00');
-            
             const colStart = ((startMin - baseMin) / 15) + 2;
             const colSpan = (endMin - startMin) / 15;
             
@@ -185,11 +269,31 @@ function initScheduleGrid() {
                 block.classList.add('favorite');
             }
             
-            block.addEventListener('click', () => toggleFavorite(block, act.artist));
+            const favBtn = document.createElement('button');
+            favBtn.className = 'fav-btn';
+            favBtn.textContent = favorites.includes(act.artist) ? '⭐' : '☆';
+            favBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleFavorite(block, act.artist);
+                favBtn.textContent = JSON.parse(localStorage.getItem('favorites') || '[]').includes(act.artist) ? '⭐' : '☆';
+            });
+            block.appendChild(favBtn);
+            
+            block.addEventListener('click', () => {
+                const details = artistDetails[act.artist];
+                if (details) {
+                    document.getElementById('artist-name-display').textContent = act.artist;
+                    document.getElementById('artist-stage').textContent = `Locatie: ${act.stage}`;
+                    document.getElementById('artist-time').textContent = `Tijd: ${act.start} - ${act.end}`;
+                    document.getElementById('artist-desc').textContent = details.desc;
+                    document.getElementById('artist-img').src = details.img;
+                }
+                document.getElementById('page-schedule').style.display = 'none';
+                document.getElementById('page-artist-info').style.display = 'block';
+            });
             grid.appendChild(block);
         });
         
-        // Achtergrond gridlijnen vullen voor lege vakken
         timeSlots.forEach((time, slotIndex) => {
             const colIndex = slotIndex + 2;
             const isOccupied = stageActs.some(act => {
@@ -222,6 +326,15 @@ function toggleFavorite(element, artist) {
     }
     localStorage.setItem('favorites', JSON.stringify(favorites));
 }
+
+document.querySelectorAll('.day-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        activeDay = button.textContent.trim().toLowerCase();
+        initScheduleGrid();
+    });
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     initScheduleGrid();

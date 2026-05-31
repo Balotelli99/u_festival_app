@@ -11,3 +11,4 @@ Maak een kleine begin en hou de code simpel
 
 29 mei geef de rode kleur w
 
+31 mei maak de progamma sectie meer responive

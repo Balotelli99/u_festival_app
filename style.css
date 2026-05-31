@@ -40,6 +40,23 @@ input[type="radio"] { display: none; }
 #btn-schedule:checked ~ .content-container #page-schedule { display: block; }
 #btn-map:checked ~ .content-container #page-map { display: block; }
 
+#btn-home:checked ~ .content-container #page-info,
+#btn-home:checked ~ .content-container #page-schedule,
+#btn-home:checked ~ .content-container #page-map,
+#btn-home:checked ~ .content-container #page-artist-info,
+#btn-info:checked ~ .content-container #page-home,
+#btn-info:checked ~ .content-container #page-schedule,
+#btn-info:checked ~ .content-container #page-map,
+#btn-info:checked ~ .content-container #page-artist-info,
+#btn-schedule:checked ~ .content-container #page-home,
+#btn-schedule:checked ~ .content-container #page-info,
+#btn-schedule:checked ~ .content-container #page-map,
+#btn-schedule:checked ~ .content-container #page-artist-info,
+#btn-map:checked ~ .content-container #page-home,
+#btn-map:checked ~ .content-container #page-info,
+#btn-map:checked ~ .content-container #page-schedule,
+#btn-map:checked ~ .content-container #page-artist-info { display: none; }
+
 #page-news-detail { display: none; min-height: 80vh; }
 
 /* 4. HEADER CONTAINER */
@@ -136,27 +153,29 @@ body.dark-mode .acc-content { background: #333333; color: #FFFFFF; }
 
 /* 7. PROGRAMMA GRID (Exact zoals afbeelding) */
 .schedule-grid-container {
-    margin: 0 20px;
+    margin: 0 15px 10px;
     overflow: auto;
     border: 2px solid var(--grid-border);
     border-radius: 10px;
     background-color: #FFFFFF;
-    max-height: 65vh;
+    max-height: 60vh;
 }
 
 .schedule-grid {
     display: grid;
     position: relative;
+    min-width: 100%;
 }
 
 .time-header {
     background: #FFFFFF;
     color: #000000;
     font-weight: 400;
-    font-size: 0.85rem;
+    font-size: 0.72rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 4px 2px;
     border-right: 1px solid var(--grid-border);
     border-bottom: 2px solid var(--grid-border);
     position: sticky;
@@ -168,10 +187,11 @@ body.dark-mode .acc-content { background: #333333; color: #FFFFFF; }
     background: #FFFFFF;
     color: #1A5B7A;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 6px;
     border-right: 2px solid var(--grid-border);
     border-bottom: 1px solid var(--grid-border);
 }
@@ -189,8 +209,8 @@ body.dark-mode .acc-content { background: #333333; color: #FFFFFF; }
     background: #1A5B7A; 
     color: #FFFFFF;
     border-radius: 8px;
-    padding: 8px;
-    margin: 3px 5px;
+    padding: 5px 6px;
+    margin: 2px 4px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -198,10 +218,30 @@ body.dark-mode .acc-content { background: #333333; color: #FFFFFF; }
     align-items: center;
     text-align: center;
     z-index: 2;
+    position: relative;
 }
 
-.artist-name { font-weight: 700; font-size: 0.85rem; }
-.artist-time { font-size: 0.75rem; opacity: 0.9; margin-top: 4px; }
+.fav-btn {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #FFFFFF;
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 1px 4px;
+    border-radius: 4px;
+    line-height: 1;
+}
+
+.schedule-block.favorite .fav-btn {
+    background: rgba(0,0,0,0.2);
+    color: #000000;
+}
+
+.artist-name { font-weight: 700; font-size: 0.76rem; line-height: 1.1; }
+.artist-time { font-size: 0.68rem; opacity: 0.9; margin-top: 3px; }
 
 /* Grid achtergrondlijnen */
 .grid-empty-cell {
@@ -247,3 +287,8 @@ body.dark-mode .stage-header {
     background-color: #1e1e1e; color: #ffffff; border-color: #444;
 }
 body.dark-mode .grid-empty-cell { border-color: #333; }
+
+#page-artist-info .news-img {
+    width: 120px;
+    height: 120px;
+}
