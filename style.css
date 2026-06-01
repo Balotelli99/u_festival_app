@@ -26,16 +26,26 @@ body {
 
 /* 2. TYPOGRAFIE */
 h1, h2, h3 { font-weight: 700; color: var(--secondary); }
-.sec-title { padding: 20px 0 10px 20px; font-size: 1.8rem; }
-p { font-weight: 400; }
+h4 { font-weight: 700; color: var(--secondary); font-size: 1rem; }
+.sec-title { padding: 20px 0 10px 20px; font-size: 1.8rem; margin: 0; }
+p { font-weight: 400; line-height: 1.6; }
 label { font-weight: 300; font-style: italic; }
+button { font-weight: 300; font-style: italic; }
+summary { font-weight: 700; }
+
+/* Mobile Typography */
+@media (max-width: 600px) {
+    .sec-title { font-size: 1.5rem; }
+    h1, h2 { font-size: 1.3rem; }
+    p { font-size: 0.95rem; }
+    label { font-size: 0.9rem; }
+}
 
 /* 3. NAVIGATIE LOGICA (Zonder JS) */
 input[type="radio"] { display: none; }
 .page { display: none; min-height: 80vh; }
 
 #btn-home:checked ~ .content-container #page-home { display: block; }
-#btn-home:checked ~ .content-container #page-news-detail { display: none; }
 #btn-info:checked ~ .content-container #page-info { display: block; }
 #btn-schedule:checked ~ .content-container #page-schedule { display: block; }
 #btn-map:checked ~ .content-container #page-map { display: block; }
@@ -44,20 +54,24 @@ input[type="radio"] { display: none; }
 #btn-home:checked ~ .content-container #page-schedule,
 #btn-home:checked ~ .content-container #page-map,
 #btn-home:checked ~ .content-container #page-artist-info,
+#btn-home:checked ~ .content-container #page-artist-detail,
 #btn-info:checked ~ .content-container #page-home,
 #btn-info:checked ~ .content-container #page-schedule,
 #btn-info:checked ~ .content-container #page-map,
 #btn-info:checked ~ .content-container #page-artist-info,
+#btn-info:checked ~ .content-container #page-artist-detail,
 #btn-schedule:checked ~ .content-container #page-home,
 #btn-schedule:checked ~ .content-container #page-info,
 #btn-schedule:checked ~ .content-container #page-map,
 #btn-schedule:checked ~ .content-container #page-artist-info,
+#btn-schedule:checked ~ .content-container #page-artist-detail,
 #btn-map:checked ~ .content-container #page-home,
 #btn-map:checked ~ .content-container #page-info,
 #btn-map:checked ~ .content-container #page-schedule,
-#btn-map:checked ~ .content-container #page-artist-info { display: none; }
+#btn-map:checked ~ .content-container #page-artist-info,
+#btn-map:checked ~ .content-container #page-artist-detail { display: none; }
 
-#page-news-detail { display: none; min-height: 80vh; }
+#page-artist-detail { display: none; min-height: 80vh; }
 
 /* 4. HEADER CONTAINER */
 .main-header {
@@ -83,7 +97,7 @@ body.dark-mode .main-header { background-color: var(--secondary); }
 }
 
 /* 5. BLOKJES & ACCORDIONS */
-.card, .news-block {
+.card, .news-block, .artist-card {
     background: #f4f4f4;
     margin: 10px 20px;
     padding: 15px;
@@ -92,14 +106,70 @@ body.dark-mode .main-header { background-color: var(--secondary); }
     gap: 15px;
     align-items: flex-start;
 }
-.news-block img.news-img {
-    width: 50px;
-    height: 50px;
+.artist-list {
+    display: grid;
+    gap: 12px;
+    padding: 0 20px 20px;
+}
+.artist-card {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.artist-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(0,0,0,0.08);
+}
+.artist-card-img, .news-block img.news-img {
+    width: 90px;
+    height: 90px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 16px;
     flex-shrink: 0;
 }
-.news-content { flex: 1; padding: 0; }
+.artist-card h3 {
+    margin-bottom: 6px;
+    color: var(--secondary);
+}
+.artist-card p {
+    margin: 0;
+    color: #555;
+}
+.artist-detail {
+    flex-direction: column;
+    gap: 20px;
+}
+.artist-detail-img {
+    width: 100%;
+    max-width: 320px;
+    height: 220px;
+    border-radius: 18px;
+}
+.artist-detail .news-content {
+    padding: 0;
+}
+.artist-detail-tagline {
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--accent);
+}
+.artist-video {
+    margin: 0 20px 20px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #000;
+}
+.artist-video iframe {
+    width: 100%;
+    min-height: 300px;
+}
+.page-intro {
+    margin: 0 20px 10px;
+    color: #333;
+    font-size: 1rem;
+}
 
 body.dark-mode .card, body.dark-mode .news-block {
     background: #222222;
@@ -291,4 +361,251 @@ body.dark-mode .grid-empty-cell { border-color: #333; }
 #page-artist-info .news-img {
     width: 120px;
     height: 120px;
+}
+
+/* ===== INTERACTIVE FESTIVAL MAP (SVG-based) ===== */
+
+.festival-map-container {
+    position: relative;
+    height: calc(100vh - 180px);
+    min-height: 500px;
+    background: #f5f5f5;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+body.dark-mode .festival-map-container {
+    background: #1a1a1a;
+}
+
+#festival-map-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+#festival-map-svg:active {
+    cursor: grabbing;
+}
+
+.stage-location {
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.stage-location:hover circle {
+    filter: brightness(1.15);
+    stroke-width: 4 !important;
+}
+
+.stage-location text {
+    pointer-events: none;
+}
+
+/* Map info panels */
+.map-info-panel {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 0.9rem;
+    max-height: 130px;
+    overflow-y: auto;
+    z-index: 400;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+body.dark-mode .map-info-panel {
+    background: rgba(30, 30, 30, 0.95);
+    color: #fff;
+}
+
+.gps-status {
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--secondary);
+}
+
+.current-info {
+    font-size: 0.85rem;
+}
+
+.live-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.stage-live-item {
+    padding: 6px;
+    background: rgba(240, 50, 40, 0.1);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+body.dark-mode .stage-live-item {
+    background: rgba(240, 50, 40, 0.2);
+}
+
+/* Marker detail popup */
+.marker-detail {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    max-height: 45%;
+    overflow-y: auto;
+    z-index: 401;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .marker-detail {
+    background: #1e1e1e;
+    color: #fff;
+}
+
+.marker-detail h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: var(--secondary);
+}
+
+body.dark-mode .marker-detail h3 {
+    color: #64B5F6;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stage-description {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 12px;
+    color: #666;
+}
+
+body.dark-mode .stage-description {
+    color: #aaa;
+}
+
+.marker-acts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.act-info {
+    padding: 12px;
+    border-radius: 8px;
+    background: #f5f5f5;
+}
+
+body.dark-mode .act-info {
+    background: #2a2a2a;
+}
+
+.act-info.current {
+    background: rgba(240, 50, 40, 0.1);
+    border-left: 4px solid var(--accent);
+}
+
+body.dark-mode .act-info.current {
+    background: rgba(240, 50, 40, 0.2);
+}
+
+.act-info.next {
+    background: rgba(36, 123, 160, 0.1);
+    border-left: 4px solid var(--secondary);
+}
+
+body.dark-mode .act-info.next {
+    background: rgba(36, 123, 160, 0.2);
+}
+
+.act-info strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+
+.act-name {
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.act-time {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.no-acts {
+    font-style: italic;
+    color: #999;
+    text-align: center;
+    padding: 10px;
+}
+
+body.dark-mode .no-acts {
+    color: #aaa;
+}
+
+.festival-map-container,
+#festival-map-container {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    height: calc(100vh - 200px);
+    max-height: 700px;
+    background: #f7f7f7;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
+
+#festival-map {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Responsive map */
+@media (max-width: 600px) {
+    .festival-map-container {
+        min-height: 400px;
+    }
+    
+    .map-info-panel {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+    
+    .marker-detail {
+        max-height: 50%;
+    }
 }

@@ -6,6 +6,7 @@
     <title>❤️U Festival</title>
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Sansation:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,46 +27,22 @@
     <main class="content-container">
 
         <section class="page" id="page-home">
-            <h1 class="sec-title" id="t-home">Nieuws</h1>
-            <div class="news-block clickable-news" data-news="welcome">
-                <img src="fotos/image (1).png" alt="❤️U Festival" class="news-img">
-                <div class="news-content">
-                    <h3>Welkom bij ❤️U!</h3>
-                </div>
-            </div>
-            <div class="news-block clickable-news" data-news="lineup">
-                <img src="fotos/image (2).png" alt="Line-up" class="news-img">
-                <div class="news-content">
-                    <h3>Line-up 2024</h3>
-                </div>
-            </div>
-            <div class="news-block clickable-news" data-news="location">
-                <img src="fotos/image (3).png" alt="Locatie" class="news-img">
-                <div class="news-content">
-                    <h3>Locatie Strijkviertel</h3>
-                </div>
-            </div>
-            <div class="news-block clickable-news" data-news="tickets">
-                <img src="fotos/image (4).png" alt="Tickets" class="news-img">
-                <div class="news-content">
-                    <h3>Tickets Nu Beschikbaar</h3>
-                </div>
-            </div>
-            <div class="news-block clickable-news" data-news="food">
-                <img src="fotos/image (5).png" alt="Food & Drinks" class="news-img">
-                <div class="news-content">
-                    <h3>Food & Drinks</h3>
-                </div>
-            </div>
+            <h1 class="sec-title" id="t-home">Acts</h1>
+            <p class="page-intro">Ontdek onze artiesten. Klik op een act voor meer informatie, een biografie en een video.</p>
+            <div class="artist-list" id="artist-list"></div>
         </section>
 
-        <section class="page" id="page-news-detail">
-            <h1 class="sec-title" id="news-detail-title"></h1>
-            <div class="news-block">
-                <img src="" alt="" id="news-detail-img" class="news-img">
+        <section class="page" id="page-artist-detail" style="display:none;">
+            <h1 class="sec-title" id="artist-detail-title"></h1>
+            <div class="news-block artist-detail">
+                <img src="" alt="" id="artist-detail-img" class="news-img artist-detail-img">
                 <div class="news-content">
-                    <p id="news-detail-content"></p>
+                    <p class="artist-detail-tagline" id="artist-detail-tagline"></p>
+                    <p id="artist-detail-bio"></p>
                 </div>
+            </div>
+            <div class="artist-video">
+                <iframe id="artist-detail-video" src="" title="Artist video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <button id="back-to-home" class="back-btn">Terug</button>
         </section>
@@ -145,9 +122,17 @@
 
         <section class="page" id="page-map">
             <h1 class="sec-title" id="t-map">Plattegrond</h1>
-            <div class="map-placeholder">
-                <p>Locatie: Strijkviertel, Utrecht</p>
-                <p id="gps-status">GPS Locatie laden...</p>
+            <div id="festival-map-container">
+                <div id="festival-map"></div>
+                <div id="map-info-panel" class="map-info-panel">
+                    <div id="gps-status" class="gps-status">📍 Locatie laden...</div>
+                    <div id="current-info" class="current-info"></div>
+                </div>
+                <div id="marker-detail" class="marker-detail" style="display:none;">
+                    <button id="close-marker-detail" class="close-btn">×</button>
+                    <h3 id="marker-title"></h3>
+                    <div id="marker-content"></div>
+                </div>
             </div>
         </section>
 
@@ -160,6 +145,7 @@
         <label for="btn-map">Kaart</label>
     </nav>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
