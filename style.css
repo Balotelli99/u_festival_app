@@ -22,6 +22,8 @@ body {
     font-weight: 400;
     background: #FFFFFF;
     color: var(--primary);
+    font-size: 16px;
+    line-height: 1.6;
     padding-bottom: 80px;
 }
 
@@ -32,11 +34,12 @@ body.dark-mode {
 /* 2. TYPOGRAFIE */
 h1, h2, h3 { font-weight: 700; color: var(--secondary); }
 h4 { font-weight: 700; color: var(--secondary); font-size: 1rem; }
-.sec-title { padding: 20px 0 10px 20px; font-size: 1.8rem; margin: 0; }
+.sec-title { padding: 20px 0 10px 20px; font-size: 1.8rem; margin: 0; font-weight: 700; }
 p { font-weight: 400; line-height: 1.6; }
 label { font-weight: 300; font-style: italic; }
 button { font-weight: 300; font-style: italic; }
 summary { font-weight: 700; }
+strong { font-weight: 700; }
 
 /* Mobile Typography */
 @media (max-width: 600px) {
@@ -102,6 +105,13 @@ body.dark-mode .main-header { background-color: var(--secondary); }
     color: var(--base);
 }
 
+.logo-img {
+    height: 42px;
+    width: auto;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
 .logo-mark {
     font-size: 1.8rem;
     display: inline-flex;
@@ -116,7 +126,7 @@ body.dark-mode .main-header { background-color: var(--secondary); }
 
 .logo-text {
     font-size: 1.2rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
@@ -139,6 +149,8 @@ body.dark-mode .main-header { background-color: var(--secondary); }
     justify-content: center;
     cursor: pointer;
     transition: transform 0.2s ease, background 0.2s ease;
+    font-weight: 300;
+    font-style: italic;
 }
 
 .top-controls button:hover {
@@ -150,14 +162,16 @@ body.dark-mode .main-header { background-color: var(--secondary); }
     min-width: 46px;
     padding: 0 12px;
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: 300;
+    font-style: italic;
 }
 
 .qr-btn {
     min-width: 46px;
     padding: 0 12px;
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: 300;
+    font-style: italic;
     letter-spacing: 0.04em;
 }
 
@@ -191,13 +205,21 @@ body.dark-mode .main-header { background-color: var(--secondary); }
 }
 
 .bottom-nav .nav-icon {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     line-height: 1;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
 .bottom-nav .nav-label {
     display: block;
     font-size: 0.72rem;
+    font-weight: 400;
+}
+
+.bottom-nav .nav-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
 }
 
 #btn-home:checked ~ .bottom-nav label[for="btn-home"],
@@ -289,9 +311,17 @@ body {
     font-size: 1rem;
 }
 
-body.dark-mode .card, body.dark-mode .news-block {
+body.dark-mode .card, body.dark-mode .news-block, body.dark-mode .artist-card {
     background: #222222;
     color: #FFFFFF;
+}
+
+body.dark-mode .artist-card p {
+    color: #CCCCCC;
+}
+
+body.dark-mode .page-intro {
+    color: #DDDDDD;
 }
 
 .accordion {
@@ -311,7 +341,8 @@ body.dark-mode .acc-content { background: #333333; color: #FFFFFF; }
     padding: 12px 24px;
     border-radius: 8px;
     margin: 20px;
-    font-weight: 700;
+    font-weight: 300;
+    font-style: italic;
     cursor: pointer;
 }
 
@@ -330,6 +361,7 @@ body.dark-mode .acc-content { background: #333333; color: #FFFFFF; }
     background: #FFFFFF;
     font-size: 1.1rem;
     font-style: italic;
+    font-weight: 300;
     cursor: pointer;
     color: #333;
 }
@@ -940,6 +972,10 @@ body.dark-mode .no-acts {
     margin: 10px 20px 20px 20px;
 }
 
+body.dark-mode .homepage-news {
+    background: #222222;
+}
+
 .news-section-title {
     color: var(--secondary);
     font-size: 1.5rem;
@@ -950,6 +986,10 @@ body.dark-mode .no-acts {
 .news-item {
     border-bottom: 1px solid #e0e0e0;
     padding: 15px 0;
+}
+
+body.dark-mode .news-item {
+    border-bottom: 1px solid #444444;
 }
 
 .news-item:last-child {
@@ -969,6 +1009,10 @@ body.dark-mode .no-acts {
     margin-bottom: 8px;
 }
 
+body.dark-mode .news-content {
+    color: #FFFFFF;
+}
+
 .news-emoji {
     font-size: 1.2rem;
     margin-right: 8px;
@@ -979,6 +1023,10 @@ body.dark-mode .no-acts {
     color: #555;
     line-height: 1.5;
     font-size: 0.9rem;
+}
+
+body.dark-mode .news-description {
+    color: #CCCCCC;
 }
 
 /* Mobile Typography */
