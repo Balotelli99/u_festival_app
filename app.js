@@ -18,14 +18,23 @@ const qrcodeDiv = document.getElementById('qrcode');
 const qrUrlEl = document.getElementById('qr-url');
 
 function openQR() {
+    const appUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'index.html';
+
+    const isLocal = appUrl.includes('localhost') || appUrl.includes('127.0.0.1') || appUrl.startsWith('file://');
+    const inputUrl = prompt('Voer de live URL van je app in (bijv. https<strong>:</strong>//jouw-app.onrender.com/index.html):', isLocal ? '' : appUrl);
+
+    if (!inputUrl || !inputUrl.trim()) {
+        alert('Voer eerst een geldige live URL in om de QR-code te genereren.');
+        return;
+    }
+
     if (!qrModal) return;
     qrModal.style.display = 'flex';
     qrModal.setAttribute('aria-hidden', 'false');
     qrcodeDiv.innerHTML = '';
-    const appUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'index.html';
-    qrUrlEl.textContent = appUrl;
+    qrUrlEl.textContent = inputUrl.trim();
     new QRCode(qrcodeDiv, {
-        text: appUrl,
+        text: inputUrl.trim(),
         width: 220,
         height: 220,
         colorDark: '#000000',
@@ -72,7 +81,14 @@ const translations = {
 };
 
 function updateLanguage() {
-    langBtn.textContent = currentLang === 'nl' ? 'NL' : 'EN';
+    const flag = document.getElementById('lang-flag');
+    if (currentLang === 'nl') {
+        flag.src = 'fotos/Flag_of_the_Netherlands.png';
+        flag.alt = 'Nederlands';
+    } else {
+        flag.src = 'fotos/uk-flag-1444045.jpg';
+        flag.alt = 'Engels';
+    }
     document.getElementById('t-home').textContent = translations[currentLang].home;
     document.getElementById('t-info').textContent = translations[currentLang].info;
     document.getElementById('t-sched').textContent = translations[currentLang].schedule;
@@ -215,7 +231,7 @@ if (mapToggle) {
 const artistsData = {
     armin: {
         title: 'Armin van Buuren',
-        img: 'fotos/image (1).png',
+        img: 'fotos/image.png',
         video: 'https://www.youtube.com/embed/TxvpctgU_s8',
         tagline: {
             nl: 'Trance-icoon',
@@ -228,7 +244,7 @@ const artistsData = {
     },
     martin: {
         title: 'Martin Garrix',
-        img: 'fotos/image (2).png',
+        img: 'fotos/image (1).png',
         video: 'https://www.youtube.com/embed/Zv1QV6lrc_Y',
         tagline: {
             nl: 'EDM-superster',
@@ -241,7 +257,7 @@ const artistsData = {
     },
     kensington: {
         title: 'Kensington',
-        img: 'fotos/image (3).png',
+        img: 'fotos/image (2).png',
         video: 'https://www.youtube.com/embed/IH77eOyV95o',
         tagline: {
             nl: 'Indie rock anthems',
@@ -254,7 +270,7 @@ const artistsData = {
     },
     within: {
         title: 'Within Temptation',
-        img: 'fotos/image (4).png',
+        img: 'fotos/image (3).png',
         video: 'https://www.youtube.com/embed/iQVei5C2N4E',
         tagline: {
             nl: 'Symfonische metal pioniers',
@@ -267,7 +283,7 @@ const artistsData = {
     },
     destaat: {
         title: 'De Staat',
-        img: 'fotos/image (5).png',
+        img: 'fotos/image (4).png',
         video: 'https://www.youtube.com/embed/0ttGgIQpAUc',
         tagline: {
             nl: 'Experimentele rock innovators',
@@ -280,7 +296,7 @@ const artistsData = {
     },
     chefsspecial: {
         title: 'Chef’Special',
-        img: 'fotos/image (1).png',
+        img: 'fotos/image (5).png',
         video: 'https://www.youtube.com/embed/l3jRIr44lss',
         tagline: {
             nl: 'Genre-buigend funk-pop',
@@ -293,7 +309,7 @@ const artistsData = {
     },
     navarone: {
         title: 'Navarone',
-        img: 'fotos/image (2).png',
+        img: 'fotos/image (6).png',
         video: 'https://www.youtube.com/embed/EvLpaCSnc4k',
         tagline: {
             nl: 'Hard rock viermanschap',
@@ -306,7 +322,7 @@ const artistsData = {
     },
     dotan: {
         title: 'Dotan',
-        img: 'fotos/image (3).png',
+        img: 'fotos/image (7).png',
         video: 'https://www.youtube.com/embed/FZEuqzW16Nw',
         tagline: {
             nl: 'Folk-pop singer-songwriter',
@@ -319,7 +335,7 @@ const artistsData = {
     },
     eefje: {
         title: 'Eefje de Visser',
-        img: 'fotos/image (4).png',
+        img: 'fotos/image (8).png',
         video: 'https://www.youtube.com/embed/6IlLJNmLDMg',
         tagline: {
             nl: 'Sfeervolle indie-pop',
@@ -332,7 +348,7 @@ const artistsData = {
     },
     froukje: {
         title: 'Froukje',
-        img: 'fotos/image (5).png',
+        img: 'fotos/image (9).png',
         video: 'https://www.youtube.com/embed/g4PlReX9e-E',
         tagline: {
             nl: 'Oprechte popsongwriter',
@@ -345,7 +361,7 @@ const artistsData = {
     },
     spinvis: {
         title: 'Spinvis',
-        img: 'fotos/image (1).png',
+        img: 'fotos/image (10).png',
         video: 'https://www.youtube.com/embed/F3ZTrGWSLf4',
         tagline: {
             nl: 'Poëtische lo-fi surrealist in popvorm',
@@ -530,17 +546,17 @@ function timeToMinutes(timeStr) {
 }
 
 const artistDetails = {
-    'Armin van Buuren': { img: 'fotos/image (1).png', desc: 'Wereldberoemde DJ en producent, bekend om zijn energieke sets en epische trance tracks.' },
+    'Armin van Buuren': { img: 'fotos/image.png', desc: 'Wereldberoemde DJ en producent, bekend om zijn energieke sets en epische trance tracks.' },
     'Kensington': { img: 'fotos/image (2).png', desc: 'Nederlandse rockband die met hun emotionele nummers en krachtige optredens het publiek meesleuren.' },
-    'De Staat': { img: 'fotos/image (3).png', desc: 'Indrukwekkende rockband met energieke shows en een herkenbare sound.' },
-    'Navarone': { img: 'fotos/image (3).png', desc: 'Nederlands rockensemble met een unieke mix van alternatieve rock en melodische hooks.' },
-    'Dotan': { img: 'fotos/image (4).png', desc: 'Singer-songwriter bekend om zijn warme, meeslepende pop-folk nummers.' },
-    'Froukje': { img: 'fotos/image (4).png', desc: 'Popartieste met frisse energie en Nederlandstalige hits.' },
+    'De Staat': { img: 'fotos/image (4).png', desc: 'Indrukwekkende rockband met energieke shows en een herkenbare sound.' },
+    'Navarone': { img: 'fotos/image (6).png', desc: 'Nederlands rockensemble met een unieke mix van alternatieve rock en melodische hooks.' },
+    'Dotan': { img: 'fotos/image (7).png', desc: 'Singer-songwriter bekend om zijn warme, meeslepende pop-folk nummers.' },
+    'Froukje': { img: 'fotos/image (9).png', desc: 'Popartieste met frisse energie en Nederlandstalige hits.' },
     'Martin Garrix': { img: 'fotos/image (1).png', desc: 'Internationale top-DJ met grote dancehits en spectaculaire liveshows.' },
-    'Within Temptation': { img: 'fotos/image (2).png', desc: 'Symfonische metalband die grote podia weet te vullen met emotie en drama.' },
+    'Within Temptation': { img: 'fotos/image (3).png', desc: 'Symfonische metalband die grote podia weet te vullen met emotie en drama.' },
     'Chef\'Special': { img: 'fotos/image (5).png', desc: 'Verrassende live band met een mix van pop, rock, hiphop en reggae.' },
-    'Eefje de Visser': { img: 'fotos/image (5).png', desc: 'Nederlands singer-songwriter met sfeervolle, gevoelige popmuziek.' },
-    'Spinvis': { img: 'fotos/image (5).png', desc: 'Poëtische singer-songwriter met unieke, verhalende songs.' },
+    'Eefje de Visser': { img: 'fotos/image (8).png', desc: 'Nederlands singer-songwriter met sfeervolle, gevoelige popmuziek.' },
+    'Spinvis': { img: 'fotos/image (10).png', desc: 'Poëtische singer-songwriter met unieke, verhalende songs.' },
     'Talent set 1': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
     'Talent set 2': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
     'Talent set 3': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },

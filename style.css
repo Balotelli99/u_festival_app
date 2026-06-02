@@ -138,12 +138,33 @@ body.dark-mode .main-header { background-color: var(--secondary); }
     background: rgba(0,0,0,0.24);
 }
 
+.lang-flag {
+    height: 26px;
+    width: 32px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.35);
+    display: block;
+}
+
 #lang-btn {
-    min-width: 46px;
-    padding: 0 12px;
-    font-size: 0.95rem;
-    font-weight: 300;
-    font-style: italic;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.16);
+    color: #FFFFFF;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#lang-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(0,0,0,0.24);
 }
 
 .qr-btn {
