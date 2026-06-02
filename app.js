@@ -32,7 +32,7 @@ const translations = {
 };
 
 function updateLanguage() {
-    langBtn.textContent = currentLang === 'nl' ? '🇳🇱' : '🇬🇧';
+    langBtn.textContent = currentLang === 'nl' ? 'NL' : 'EN';
     document.getElementById('t-home').textContent = translations[currentLang].home;
     document.getElementById('t-info').textContent = translations[currentLang].info;
     document.getElementById('t-sched').textContent = translations[currentLang].schedule;
@@ -48,58 +48,128 @@ langBtn.addEventListener('click', () => {
     updateLanguage();
 });
 
-// 4. Geolocation API (GPS)
-document.getElementById('btn-map').addEventListener('change', () => {
-    // Initialize map if not already initialized
-    if (!mapInitialized) {
-        const mapContainer = document.getElementById('festival-map');
-        if (mapContainer) {
-            map = L.map('festival-map').setView([52.09, 5.12], 13); // Utrecht coordinates
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map);
-            setTimeout(() => {
-                if (map) {
-                    map.invalidateSize();
-                }
-            }, 250);
-        }
-        mapInitialized = true;
-    } else if (map) {
-        // If map already exists, invalidate size when tab is shown to ensure proper rendering
-        setTimeout(() => {
-            map.invalidateSize();
-        }, 250);
-    }
+// 4. GitHub-style festival map (interactive panel + zoom)
+const mapMarkers = [
+    { id: 'poton', title: 'Pôton', subtitle: 'Hoofdpodium', icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_stage1_ponton.svg', x: 60, y: 32, desc: 'Belangrijkste hoofdstage met de grootste acts van het festival.' },
+    { id: 'lake', title: 'The Lake', subtitle: 'Talent & chill', icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_stage1_ponton.svg', x: 26, y: 52, desc: 'Rustige locatie voor talent, talks en gezellige feestjes.' },
+    { id: 'food', title: 'Food & Drinks', subtitle: 'Eten & drank', icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_food.svg', x: 72, y: 68, desc: 'Diverse foodtrucks en drankstanden verspreid over het terrein.' },
+    { id: 'toilet', title: 'Toiletten', subtitle: 'Toilet & EHBO', icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_toilet.svg', x: 46, y: 78, desc: 'Toiletten en EHBO-punten op korte loopafstand.' }
+];
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            const lat = position.coords.latitude;
-            const lng = position.coords.longitude;
-            document.getElementById('gps-status').textContent = 
-                `📍 Jouw locatie: ${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+let mapScale = 1;
+let mapDrag = { active: false, startX: 0, startY: 0, offsetX: 0, offsetY: 0 };
 
-            if (map) {
-                map.setView([lat, lng], 15);
-                if (userMarker) {
-                    map.removeLayer(userMarker);
-                }
-                userMarker = L.marker([lat, lng]).addTo(map)
-                    .bindPopup('Jouw huidige locatie')
-                    .openPopup();
-            }
-        }, () => {
-            document.getElementById('gps-status').textContent = "GPS toegang geweigerd.";
-            // If we denied, we still want to show the map (at default view) but without user marker
-            if (map && !userMarker) {
-                // Optionally, we can set the view to Utrecht again? But we already set it initially.
-                // We'll leave it as is.
-            }
+function updateMapTransform() {
+    const content = document.getElementById('map-content');
+    if (!content) return;
+    content.style.transform = `translate(${mapDrag.offsetX}px, ${mapDrag.offsetY}px) scale(${mapScale})`;
+}
+
+function openMapInfo(marker) {
+    const panel = document.getElementById('map-info-panel');
+    const title = document.getElementById('map-info-title');
+    const subtitle = document.getElementById('map-info-subtitle');
+    const body = document.getElementById('map-info-body');
+    if (!panel || !title || !subtitle || !body) return;
+    title.textContent = marker.title;
+    subtitle.textContent = marker.subtitle;
+    body.textContent = marker.desc;
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+}
+
+function closeMapInfo() {
+    const panel = document.getElementById('map-info-panel');
+    if (!panel) return;
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+}
+
+function initFestivalMapLite() {
+    const content = document.getElementById('map-content');
+    const legend = document.getElementById('map-legend-items');
+    if (!content || !legend) return;
+
+    content.querySelectorAll('.map-marker').forEach(el => el.remove());
+    legend.innerHTML = '';
+
+    // Add image load/error handling
+    const mapImage = document.getElementById('map-image');
+    if (mapImage) {
+        mapImage.addEventListener('error', () => {
+            document.getElementById('map-load-error')?.classList.add('visible');
         });
-    } else {
-        document.getElementById('gps-status').textContent = "Geolocatie wordt niet ondersteund door deze browser.";
+        mapImage.addEventListener('load', () => {
+            document.getElementById('map-load-error')?.classList.remove('visible');
+        });
     }
-});
+
+    mapMarkers.forEach((marker) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'map-marker';
+        btn.style.left = `${marker.x}%`;
+        btn.style.top = `${marker.y}%`;
+        btn.setAttribute('aria-label', marker.title);
+        btn.innerHTML = `<img src="${marker.icon}" alt="" />`;
+        btn.addEventListener('click', () => openMapInfo(marker));
+        content.appendChild(btn);
+
+        const item = document.createElement('div');
+        item.className = 'map-legend-item';
+        item.innerHTML = `<img src="${marker.icon}" alt="" /><span>${marker.title}</span>`;
+        legend.appendChild(item);
+    });
+
+    document.getElementById('map-legend-toggle')?.addEventListener('click', () => {
+        document.getElementById('map-legend')?.classList.toggle('expanded');
+    });
+
+    document.getElementById('map-info-close')?.addEventListener('click', closeMapInfo);
+     document.getElementById('map-zoom-in')?.addEventListener('click', () => {
+         mapScale = Math.min(3.0, mapScale + 0.15);
+         updateMapTransform();
+     });
+     document.getElementById('map-zoom-out')?.addEventListener('click', () => {
+         mapScale = Math.max(0.3, mapScale - 0.15);
+         updateMapTransform();
+     });
+
+    const dragSurface = document.getElementById('map-drag-surface');
+    const viewport = document.getElementById('map-viewport');
+    if (dragSurface && viewport) {
+        dragSurface.addEventListener('pointerdown', (e) => {
+            mapDrag.active = true;
+            mapDrag.startX = e.clientX;
+            mapDrag.startY = e.clientY;
+            viewport.classList.add('is-dragging');
+        });
+        dragSurface.addEventListener('pointermove', (e) => {
+            if (!mapDrag.active) return;
+            mapDrag.offsetX += e.clientX - mapDrag.startX;
+            mapDrag.offsetY += e.clientY - mapDrag.startY;
+            mapDrag.startX = e.clientX;
+            mapDrag.startY = e.clientY;
+            updateMapTransform();
+        });
+        const stopDrag = () => {
+            mapDrag.active = false;
+            viewport.classList.remove('is-dragging');
+        };
+        dragSurface.addEventListener('pointerup', stopDrag);
+        dragSurface.addEventListener('pointercancel', stopDrag);
+        dragSurface.addEventListener('pointerleave', stopDrag);
+    }
+}
+
+const mapToggle = document.getElementById('btn-map');
+if (mapToggle) {
+    mapToggle.addEventListener('change', () => {
+        if (mapToggle.checked) {
+            setTimeout(initFestivalMapLite, 150);
+        }
+    });
+}
 
 // 5. News Detail Click Handler
 const artistsData = {

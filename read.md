@@ -14,3 +14,7 @@ Maak een kleine begin en hou de code simpel
 31 mei maak de progamma sectie meer responive
 
 1 juni geef een basis begin van de kaart maar hou de code simpe
+
+2 juni zorg dat je kan inzoomen en uitzoomen
+
+2 juni maak een nieuws sectie aan oven acts

@@ -17,17 +17,45 @@
     <input type="radio" name="nav" id="btn-map">
 
     <header class="main-header">
-        <div class="logo">❤️U FESTIVAL</div>
+        <a class="logo" href="#" aria-label="U Festival">
+            <span class="logo-mark">❤️</span>
+            <span class="logo-text">U FESTIVAL</span>
+        </a>
         <div class="top-controls">
-            <button id="theme-btn">🌙</button>
-            <button id="lang-btn">🇳🇱</button>
+            <button id="theme-btn" aria-label="Schakel thema">🌙</button>
+            <button id="lang-btn" aria-label="Wijzig taal">NL</button>
+            <button class="qr-btn" type="button" aria-label="QR code">QR</button>
         </div>
     </header>
 
     <main class="content-container">
 
         <section class="page" id="page-home">
-            <h1 class="sec-title" id="t-home">Acts</h1>
+            <h1 class="sec-title" id="t-home"></h1>
+            <h2 class="news-section-title">Nieuws</h2>
+            <div class="homepage-news">
+                <div class="news-item">
+                    <div class="news-date">2026-09-03</div>
+                    <div class="news-content">
+                        <span class="news-emoji">🏅</span> Golden-GLU armbandjes ophalen
+                    </div>
+                    <div class="news-description">GLU-studenten kunnen hun gouden armbandje ophalen bij de informatiebalie vanaf 11:00 op festivaldag. Vergeet je studentenpas niet!</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2026-09-01</div>
+                    <div class="news-content">
+                        <span class="news-emoji">🚌</span> Shuttlebus schema bijgewerkt
+                    </div>
+                    <div class="news-description">De gratis shuttlebus rijdt nu ook vanaf station Leidsche Rijn. Vertrek elke 15 minuten tussen 11:00 en 19:00.</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2026-08-28</div>
+                    <div class="news-content">
+                        <span class="news-emoji">🎪</span> Nieuw podium aangekondigd!
+                    </div>
+                    <div class="news-description">The Hangar is officieel toegevoegd aan het festivalterrein! Non-stop house, techno en dance van 10:00 tot middernacht.</div>
+                </div>
+            </div>
             <p class="page-intro">Ontdek onze artiesten. Klik op een act voor meer informatie, een biografie en een video.</p>
             <div class="artist-list" id="artist-list"></div>
         </section>
@@ -122,16 +150,34 @@
 
         <section class="page" id="page-map">
             <h1 class="sec-title" id="t-map">Plattegrond</h1>
-            <div id="festival-map-container">
-                <div id="festival-map"></div>
-                <div id="map-info-panel" class="map-info-panel">
-                    <div id="gps-status" class="gps-status">📍 Locatie laden...</div>
-                    <div id="current-info" class="current-info"></div>
+            <div class="map-box" id="map-box">
+                <div class="map-viewport" id="map-viewport">
+                    <div class="map-drag-surface" id="map-drag-surface" aria-hidden="true"></div>
+                    <div class="map-canvas" id="map-canvas">
+                        <div class="map-content" id="map-content">
+                            <img class="map-image" id="map-image" src="https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/map/kaart_festival_no_markers.svg" alt="Kaart festivalterrein" />
+                            <div class="map-user-location" id="map-user-location" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                    <div class="map-load-error" id="map-load-error" role="alert">Kaartafbeelding kon niet laden.</div>
                 </div>
-                <div id="marker-detail" class="marker-detail" style="display:none;">
-                    <button id="close-marker-detail" class="close-btn">×</button>
-                    <h3 id="marker-title"></h3>
-                    <div id="marker-content"></div>
+                <div class="map-zoom-controls" aria-label="Zoom bediening">
+                    <button type="button" id="map-zoom-in" aria-label="Inzoomen">+</button>
+                    <button type="button" id="map-zoom-out" aria-label="Uitzoomen">−</button>
+                </div>
+                <button type="button" class="map-gps-btn" id="map-gps-btn" aria-label="Centreer op mijn locatie" title="📍">📍</button>
+                <div class="map-legend" id="map-legend">
+                    <button type="button" class="map-legend-toggle" id="map-legend-toggle">
+                        <span class="legend-icon">🗺️</span>
+                        <span>Legenda</span>
+                    </button>
+                    <div class="map-legend-items" id="map-legend-items"></div>
+                </div>
+                <div class="map-info-panel" id="map-info-panel" role="dialog" aria-hidden="true">
+                    <button type="button" class="map-info-close" id="map-info-close" aria-label="Sluiten">×</button>
+                    <h3 id="map-info-title"></h3>
+                    <p class="map-info-subtitle" id="map-info-subtitle"></p>
+                    <div id="map-info-body"></div>
                 </div>
             </div>
         </section>
@@ -139,10 +185,10 @@
     </main>
 
     <nav class="bottom-nav">
-        <label for="btn-home">Home</label>
-        <label for="btn-info">Info</label>
-        <label for="btn-schedule">Programma</label>
-        <label for="btn-map">Kaart</label>
+        <label for="btn-home"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></label>
+        <label for="btn-info"><span class="nav-icon">ℹ️</span><span class="nav-label">Info</span></label>
+        <label for="btn-schedule"><span class="nav-icon">🎵</span><span class="nav-label">Programma</span></label>
+        <label for="btn-map"><span class="nav-icon">📍</span><span class="nav-label">Kaart</span></label>
     </nav>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
