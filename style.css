@@ -51,35 +51,15 @@ strong { font-weight: 700; }
 
 /* 3. NAVIGATIE LOGICA (Zonder JS) */
 input[type="radio"] { display: none; }
-.page { display: none; min-height: 80vh; }
 
-#btn-home:checked ~ .content-container #page-home { display: block; }
-#btn-info:checked ~ .content-container #page-info { display: block; }
-#btn-schedule:checked ~ .content-container #page-schedule { display: block; }
-#btn-map:checked ~ .content-container #page-map { display: block; }
+/* Standaard alles verbergen */
+main .page { display: none; }
 
-#btn-home:checked ~ .content-container #page-info,
-#btn-home:checked ~ .content-container #page-schedule,
-#btn-home:checked ~ .content-container #page-map,
-#btn-home:checked ~ .content-container #page-artist-info,
-#btn-home:checked ~ .content-container #page-artist-detail,
-#btn-info:checked ~ .content-container #page-home,
-#btn-info:checked ~ .content-container #page-schedule,
-#btn-info:checked ~ .content-container #page-map,
-#btn-info:checked ~ .content-container #page-artist-info,
-#btn-info:checked ~ .content-container #page-artist-detail,
-#btn-schedule:checked ~ .content-container #page-home,
-#btn-schedule:checked ~ .content-container #page-info,
-#btn-schedule:checked ~ .content-container #page-map,
-#btn-schedule:checked ~ .content-container #page-artist-info,
-#btn-schedule:checked ~ .content-container #page-artist-detail,
-#btn-map:checked ~ .content-container #page-home,
-#btn-map:checked ~ .content-container #page-info,
-#btn-map:checked ~ .content-container #page-schedule,
-#btn-map:checked ~ .content-container #page-artist-info,
-#btn-map:checked ~ .content-container #page-artist-detail { display: none; }
-
-#page-artist-detail { display: none; min-height: 80vh; }
+/* Alleen de actieve pagina tonen */
+#btn-home:checked ~ main #page-home,
+#btn-info:checked ~ main #page-info,
+#btn-schedule:checked ~ main #page-schedule,
+#btn-map:checked ~ main #page-map { display: block; }
 
 /* 4. HEADER CONTAINER */
 .main-header {
@@ -963,6 +943,92 @@ body.dark-mode .no-acts {
         max-height: 50%;
     }
 }
+
+/* QR Modal */
+.qr-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.qr-modal-content {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 28px 24px 22px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+body.dark-mode .qr-modal-content {
+    background: #1E1E1E;
+    color: #FFFFFF;
+}
+
+.qr-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 26px;
+    cursor: pointer;
+    color: #555;
+    line-height: 1;
+}
+
+body.dark-mode .qr-close { color: #DDDDDD; }
+
+.qr-title {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--secondary);
+    margin: 0 0 6px;
+}
+
+.qr-subtitle {
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0 0 18px;
+}
+
+body.dark-mode .qr-subtitle { color: #BBBBBB; }
+
+#qrcode {
+    display: inline-flex;
+    padding: 12px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    border: 2px solid #E5E5E5;
+}
+
+body.dark-mode #qrcode {
+    background: #2A2A2A;
+    border-color: #444444;
+}
+
+#qrcode img, #qrcode canvas {
+    display: block;
+    max-width: 220px;
+    height: auto;
+}
+
+.qr-url {
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #666;
+    margin: 14px 0 0;
+    word-break: break-all;
+}
+
+body.dark-mode .qr-url { color: #AAAAAA; }
 
 /* Homepage News Styles */
 .homepage-news {

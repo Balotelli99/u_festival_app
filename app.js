@@ -10,6 +10,46 @@ themeBtn.addEventListener('click', () => {
     themeBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
 });
 
+// 2b. QR Code Modal
+const qrBtn = document.getElementById('qr-btn');
+const qrModal = document.getElementById('qr-modal');
+const qrClose = document.getElementById('qr-close');
+const qrcodeDiv = document.getElementById('qrcode');
+const qrUrlEl = document.getElementById('qr-url');
+
+function openQR() {
+    if (!qrModal) return;
+    qrModal.style.display = 'flex';
+    qrModal.setAttribute('aria-hidden', 'false');
+    qrcodeDiv.innerHTML = '';
+    const appUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'index.html';
+    qrUrlEl.textContent = appUrl;
+    new QRCode(qrcodeDiv, {
+        text: appUrl,
+        width: 220,
+        height: 220,
+        colorDark: '#000000',
+        colorLight: '#FFFFFF',
+        correctLevel: QRCode.CorrectLevel.M
+    });
+}
+
+function closeQR() {
+    if (!qrModal) return;
+    qrModal.style.display = 'none';
+    qrModal.setAttribute('aria-hidden', 'true');
+}
+
+qrBtn?.addEventListener('click', openQR);
+qrClose?.addEventListener('click', closeQR);
+qrModal?.addEventListener('click', (e) => {
+    if (e.target === qrModal) closeQR();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeQR();
+});
+
 // 3. Taalwissel (NL / EN)
 const langBtn = document.getElementById('lang-btn');
 let currentLang = 'nl';
@@ -380,10 +420,11 @@ function renderArtistDetail() {
 
 function showArtistDetail(artistKey) {
     currentArtistKey = artistKey;
-    renderArtistDetail();
 
     document.getElementById('page-home').style.display = 'none';
     document.getElementById('page-artist-detail').style.display = 'block';
+
+    setTimeout(() => renderArtistDetail(), 50);
 }
 
 updateLanguage();

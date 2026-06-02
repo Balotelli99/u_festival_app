@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Sansation:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,9 +26,19 @@
         <div class="top-controls">
             <button id="theme-btn" aria-label="Schakel thema">🌙</button>
             <button id="lang-btn" aria-label="Wijzig taal">NL</button>
-            <button class="qr-btn" type="button" aria-label="QR code">QR</button>
-        </div>
-    </header>
+        <button class="qr-btn" type="button" aria-label="QR code" id="qr-btn">QR</button>
+    </div>
+</header>
+
+<div id="qr-modal" class="qr-modal" style="display:none;" aria-hidden="true">
+    <div class="qr-modal-content">
+        <span class="qr-close" id="qr-close">&times;</span>
+        <h3 class="qr-title">Scan de QR-code</h3>
+        <p class="qr-subtitle">Scan met je telefoon om de app te openen</p>
+        <div id="qrcode"></div>
+        <p class="qr-url" id="qr-url"></p>
+    </div>
+</div>
 
     <main class="content-container">
 
