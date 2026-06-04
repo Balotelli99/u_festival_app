@@ -115,7 +115,13 @@ const translations = {
         gps: 'Centreer op mijn locatie',
         mapError: 'Kaartafbeelding kon niet laden.',
         artistInfo: 'Artiest Info',
-        close: 'Sluiten'
+        close: 'Sluiten',
+        newsContent1: '🏅 Golden-GLU armbandjes ophalen',
+        newsDesc1: 'GLU-studenten kunnen hun gouden armbandje ophalen bij de informatiebalie vanaf 11:00 op festivaldag. Vergeet je studentenpas niet!',
+        newsContent2: '🚌 Shuttlebus schema bijgewerkt',
+        newsDesc2: 'De gratis shuttlebus rijdt nu ook vanaf station Leidsche Rijn. Vertrek elke 15 minuten tussen 11:00 en 19:00.',
+        newsContent3: '🎪 Nieuw podium aangekondigd!',
+        newsDesc3: 'The Hangar is officieel toegevoegd aan het festivalterrein! Non-stop house, techno en dance van 10:00 tot middernacht.'
     },
     en: {
         home: 'Acts',
@@ -168,7 +174,13 @@ const translations = {
         gps: 'Center on my location',
         mapError: 'Map image could not load.',
         artistInfo: 'Artist Info',
-        close: 'Close'
+        close: 'Close',
+        newsContent1: '🏅 Pick up your Golden-GLU wristband',
+        newsDesc1: 'GLU students can pick up their golden wristband at the information desk from 11:00 on festival day. Don\'t forget your student ID!',
+        newsContent2: '🚌 Shuttle bus schedule updated',
+        newsDesc2: 'The free shuttle bus now also runs from station Leidsche Rijn. Departures every 15 minutes between 11:00 and 19:00.',
+        newsContent3: '🎪 New stage announced!',
+        newsDesc3: 'The Hangar has officially been added to the festival grounds! Non-stop house, techno and dance from 10:00 to midnight.'
     }
 };
 
@@ -208,6 +220,13 @@ function updateLanguage() {
 
     const newsTitle = document.querySelector('.news-section-title');
     if (newsTitle) newsTitle.textContent = translations[currentLang].news;
+
+    for (let i = 1; i <= 3; i++) {
+        const contentEl = document.getElementById(`news-content-${i}`);
+        const descEl = document.getElementById(`news-desc-${i}`);
+        if (contentEl) contentEl.innerHTML = translations[currentLang][`newsContent${i}`];
+        if (descEl) descEl.textContent = translations[currentLang][`newsDesc${i}`];
+    }
 
     const pageIntro = document.querySelector('.page-intro');
     if (pageIntro) pageIntro.textContent = translations[currentLang].discoverArtists;
@@ -888,7 +907,7 @@ document.querySelectorAll('.day-btn').forEach(button => {
     button.addEventListener('click', () => {
         document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
-        activeDay = button.textContent.trim().toLowerCase();
+        activeDay = button.dataset.day;
         initScheduleGrid();
     });
 });

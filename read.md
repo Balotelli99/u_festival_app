@@ -25,3 +25,5 @@ Maak een kleine begin en hou de code simpel
 2 juni de dark mode funtie werkt niet bij de nieuws sectie kan je dat fixen met uitleg
 
 2 juni zorg dat de vertaal funtie goed werkt bij de homepage
+
+4 juni fix the bugs voor vertaling
