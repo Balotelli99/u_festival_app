@@ -103,8 +103,8 @@ const translations = {
         faq: 'FAQ',
         faqMeds: 'Ik gebruik medicatie. Wat nu?',
         faqMedsAns: 'Het is toegestaan om medicijnen mee te nemen in een dosis die je maximaal nodig hebt op 1 dag. Een doktersverklaring/medicatiepaspoort is noodzakelijk.<br>De beveiliging zal jouw documentatie beoordelen en de medicijnen controleren. Het kan zijn dat de EHBO jouw medicijnen in bewaring neemt.',
-        faqLeave: 'Mag ik het festivalterrein tussendags verlaten?',
-        faqLeaveAns: 'Nee, helaas is dat niet mogelijk. Om de veiligheid van alle bezoekers te kunnen waarborgen, kunnen we het niet toestaan dat het festivalterrein tussendags verlaten wordt.',
+        faqLeave: 'Mag ik het festivalterrein tussentijds verlaten?',
+        faqLeaveAns: 'Nee, helaas is dat niet mogelijk. Om de veiligheid van alle bezoekers te kunnen waarborgen, kunnen we het niet toestaan dat het festivalterrein tussentijds verlaten wordt.',
         faqLockers: 'Zijn er lockers?',
         faqLockersAns: 'Yes, deze zijn er! Op het terrein kun je medium & grote lockers huren.',
         goldenGlu: 'Golden-GLU',
@@ -115,13 +115,7 @@ const translations = {
         gps: 'Centreer op mijn locatie',
         mapError: 'Kaartafbeelding kon niet laden.',
         artistInfo: 'Artiest Info',
-        close: 'Sluiten',
-        welcome: 'Het ❤️U Festival is voor (nieuwe) studenten in de regio Utrecht en is een aanvulling op UIT.',
-        newsItems: [
-            { date: '2026-09-03', emoji: '🏅', title: 'Golden-GLU armbandjes ophalen', desc: 'GLU-studenten kunnen hun gouden armbandje ophalen bij de informatiebalie vanaf 11:00 op festivaldag. Vergeet je studentenpas niet!' },
-            { date: '2026-09-01', emoji: '🚌', title: 'Shuttlebus schema bijgewerkt', desc: 'De gratis shuttlebus rijdt nu ook vanaf station Leidsche Rijn. Vertrek elke 15 minuten tussen 11:00 en 19:00.' },
-            { date: '2026-08-28', emoji: '🎪', title: 'Nieuw podium aangekondigd!', desc: 'The Hangar is officieel toegevoegd aan het festivalterrein! Non-stop house, techno en dance van 10:00 tot middernacht.' }
-        ]
+        close: 'Sluiten'
     },
     en: {
         home: 'Acts',
@@ -174,13 +168,7 @@ const translations = {
         gps: 'Center on my location',
         mapError: 'Map image could not load.',
         artistInfo: 'Artist Info',
-        close: 'Close',
-        welcome: 'The ❤️U Festival is for (new) students in the Utrecht region and is an addition to UIT.',
-        newsItems: [
-            { date: '2026-09-03', emoji: '🏅', title: 'Pick up Golden-GLU wristbands', desc: 'GLU students can pick up their golden wristbands at the info desk from 11:00 on festival day. Don\'t forget your student card!' },
-            { date: '2026-09-01', emoji: '🚌', title: 'Shuttle bus schedule updated', desc: 'The free shuttle bus now also runs from Leidsche Rijn station. Departure every 15 minutes between 11:00 and 19:00.' },
-            { date: '2026-08-28', emoji: '🎪', title: 'New stage announced!', desc: 'The Hangar has been officially added to the festival grounds! Non-stop house, techno and dance from 10:00 to midnight.' }
-        ]
+        close: 'Close'
     }
 };
 
@@ -223,24 +211,6 @@ function updateLanguage() {
 
     const pageIntro = document.querySelector('.page-intro');
     if (pageIntro) pageIntro.textContent = translations[currentLang].discoverArtists;
-
-    // Translate welcome text on info page
-    const welcomeText = document.getElementById('info-welcome');
-    if (welcomeText) welcomeText.textContent = translations[currentLang].welcome;
-
-    // Translate news items on home page
-    const newsItems = document.querySelectorAll('.news-item');
-    translations[currentLang].newsItems.forEach((item, index) => {
-        const newsItem = newsItems[index];
-        if (newsItem) {
-            const dateEl = newsItem.querySelector('.news-date');
-            const contentEl = newsItem.querySelector('.news-content');
-            const descEl = newsItem.querySelector('.news-description');
-            if (dateEl) dateEl.textContent = item.date;
-            if (contentEl) contentEl.innerHTML = `<span class="news-emoji">${item.emoji}</span> ${item.title}`;
-            if (descEl) descEl.textContent = item.desc;
-        }
-    });
 
     const qrTitle = document.querySelector('.qr-title');
     if (qrTitle) qrTitle.textContent = translations[currentLang].qrTitle;
@@ -760,23 +730,23 @@ function timeToMinutes(timeStr) {
 }
 
 const artistDetails = {
-    'Armin van Buuren': { img: 'fotos/image.png', desc: { nl: 'Wereldberoemde DJ en producent, bekend om zijn energieke sets en epische trance tracks.', en: 'World-renowned DJ and producer, known for his energetic sets and epic trance tracks.' } },
-    'Kensington': { img: 'fotos/image (2).png', desc: { nl: 'Nederlandse rockband die met hun emotionele nummers en krachtige optredens het publiek meesleuren.', en: 'Dutch rock band that captivates audiences with their emotional songs and powerful performances.' } },
-    'De Staat': { img: 'fotos/image (4).png', desc: { nl: 'Indrukwekkende rockband met energieke shows en een herkenbare sound.', en: 'Impressive rock band with energetic shows and a recognizable sound.' } },
-    'Navarone': { img: 'fotos/image (6).png', desc: { nl: 'Nederlands rockensemble met een unieke mix van alternatieve rock en melodische hooks.', en: 'Dutch rock ensemble with a unique mix of alternative rock and melodic hooks.' } },
-    'Dotan': { img: 'fotos/image (7).png', desc: { nl: 'Singer-songwriter bekend om zijn warme, meeslepende pop-folk nummers.', en: 'Singer-songwriter known for his warm, captivating pop-folk songs.' } },
-    'Froukje': { img: 'fotos/image (9).png', desc: { nl: 'Popartieste met frisse energie en Nederlandstalige hits.', en: 'Pop artist with fresh energy and Dutch-language hits.' } },
-    'Martin Garrix': { img: 'fotos/image (1).png', desc: { nl: 'Internationale top-DJ met grote dancehits en spectaculaire liveshows.', en: 'International top DJ with major dance hits and spectacular live shows.' } },
-    'Within Temptation': { img: 'fotos/image (3).png', desc: { nl: 'Symfonische metalband die grote podia weet te vullen met emotie en drama.', en: 'Symphonic metal band that fills large stages with emotion and drama.' } },
-    'Chef\'Special': { img: 'fotos/image (5).png', desc: { nl: 'Verrassende live band met een mix van pop, rock, hiphop en reggae.', en: 'Surprising live band with a mix of pop, rock, hip-hop and reggae.' } },
-    'Eefje de Visser': { img: 'fotos/image (8).png', desc: { nl: 'Nederlands singer-songwriter met sfeervolle, gevoelige popmuziek.', en: 'Dutch singer-songwriter with atmospheric, sensitive pop music.' } },
-    'Spinvis': { img: 'fotos/image (10).png', desc: { nl: 'Poëtische singer-songwriter met unieke, verhalende songs.', en: 'Poetic singer-songwriter with unique, storytelling songs.' } },
-    'Talent set 1': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
-    'Talent set 2': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
-    'Talent set 3': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
-    'Talent set 4': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
-    'Talent set 5': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
-    'Talent set 6': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
+    'Armin van Buuren': { img: 'fotos/image.png', desc: 'Wereldberoemde DJ en producent, bekend om zijn energieke sets en epische trance tracks.' },
+    'Kensington': { img: 'fotos/image (2).png', desc: 'Nederlandse rockband die met hun emotionele nummers en krachtige optredens het publiek meesleuren.' },
+    'De Staat': { img: 'fotos/image (4).png', desc: 'Indrukwekkende rockband met energieke shows en een herkenbare sound.' },
+    'Navarone': { img: 'fotos/image (6).png', desc: 'Nederlands rockensemble met een unieke mix van alternatieve rock en melodische hooks.' },
+    'Dotan': { img: 'fotos/image (7).png', desc: 'Singer-songwriter bekend om zijn warme, meeslepende pop-folk nummers.' },
+    'Froukje': { img: 'fotos/image (9).png', desc: 'Popartieste met frisse energie en Nederlandstalige hits.' },
+    'Martin Garrix': { img: 'fotos/image (1).png', desc: 'Internationale top-DJ met grote dancehits en spectaculaire liveshows.' },
+    'Within Temptation': { img: 'fotos/image (3).png', desc: 'Symfonische metalband die grote podia weet te vullen met emotie en drama.' },
+    'Chef\'Special': { img: 'fotos/image (5).png', desc: 'Verrassende live band met een mix van pop, rock, hiphop en reggae.' },
+    'Eefje de Visser': { img: 'fotos/image (8).png', desc: 'Nederlands singer-songwriter met sfeervolle, gevoelige popmuziek.' },
+    'Spinvis': { img: 'fotos/image (10).png', desc: 'Poëtische singer-songwriter met unieke, verhalende songs.' },
+    'Talent set 1': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Talent set 2': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Talent set 3': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Talent set 4': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Talent set 5': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Talent set 6': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
     'Talent set 7': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
     'Comedy': { img: 'fotos/image (5).png', desc: 'Lachgarantie met een scherpe blik op het leven en onvergetelijke sketches.' },
     'Lecture': { img: 'fotos/image (5).png', desc: 'Inspirerende spreker die diepe gedachten deelt over actuele onderwerpen.' },
@@ -918,7 +888,7 @@ document.querySelectorAll('.day-btn').forEach(button => {
     button.addEventListener('click', () => {
         document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
-        activeDay = button.dataset.day;
+        activeDay = button.textContent.trim().toLowerCase();
         initScheduleGrid();
     });
 });
