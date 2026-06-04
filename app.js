@@ -69,14 +69,118 @@ const translations = {
         info: 'Informatie',
         schedule: 'Programma',
         map: 'Plattegrond',
-        back: 'Terug'
+        back: 'Terug',
+        navHome: 'Home',
+        navInfo: 'Info',
+        navSchedule: 'Programma',
+        navMap: 'Kaart',
+        daySat: 'Zaterdag',
+        daySun: 'Zondag',
+        location: 'Locatie',
+        time: 'Tijd',
+        news: 'Nieuws',
+        discoverArtists: 'Ontdek onze artiesten. Klik op een act voor meer informatie, een biografie en een video.',
+        qrTitle: 'Scan de QR-code',
+        qrSubtitle: 'Scan met je telefoon om de app te openen',
+        generalContact: 'Algemeen & Contact',
+        address: 'Adres',
+        addressText: 'Locatie: Strijkviertel, Utrecht<br>Navigatieadres: Strijkviertelweg, Utrecht',
+        dateHours: 'Datum & Openingstijden',
+        dateText: 'Zaterdag 5 september 2026 - 12:00 tot 23:00 uur',
+        accessibility: 'Bereikbaarheid',
+        bike: 'Fiets',
+        bikeText: 'Er is een grote gratis fietsenstalling aanwezig waar je jouw fiets de gehele dag kunt stallen.',
+        car: 'Auto',
+        carText: 'Je kunt een parkingticket aanschaffen. Parkeren kan op P+R Papendorp, volg hiervoor de borden \'P online ticket\'. Heb je geen ticket van te voren gekocht? Dan kun je bij de parkeerwachter op locatie een parkeerticket aanschaffen (PIN ONLY). Let wel op: VOL=VOL',
+        public: 'OV',
+        publicText: 'Kom je met het openbaar vervoer naar Lief? Plan dan je trip via <a href="https://9292.nl/" target="_blank">9292.nl</a>',
+        shuttle: 'Shuttlebus',
+        shuttleText: 'Vanaf Utrecht Centraal kun je onze gratis shuttlebus richting het festivalterrein pakken. Je vindt deze bus op het centraal station aan de Mineurslaan. Volg de witte bordjes met zwarte pijlen én \'❤️U Festival\'.<br>De bus rijdt tussen 12:00 uur & 9:00 uur richting het festival en vanaf 21:00 uur kun je weer instappen om richting het station te gaan.',
+        taxi: 'Taxi + Kiss & Ride',
+        taxiText: 'Navigeer naar Strijkviertel, De Meern (Utrecht). Volg de borden "Kiss & Ride ❤️U Festival", zodra je in de buurt bent van het festivalterrein.',
+        lockers: 'Lockers',
+        lockersText: 'Op het festivalterrein zijn kluisjes aanwezig waar je je spullen veilig kunt opbergen!<br>Hier passen 3 à 4 jassen in. Goed om te weten: je kunt je kluisje gedurende de hele dag openen en sluiten zo vaak je wilt.<br>Het is niet mogelijk om online een kluisje te reserveren.',
+        faq: 'FAQ',
+        faqMeds: 'Ik gebruik medicatie. Wat nu?',
+        faqMedsAns: 'Het is toegestaan om medicijnen mee te nemen in een dosis die je maximaal nodig hebt op 1 dag. Een doktersverklaring/medicatiepaspoort is noodzakelijk.<br>De beveiliging zal jouw documentatie beoordelen en de medicijnen controleren. Het kan zijn dat de EHBO jouw medicijnen in bewaring neemt.',
+        faqLeave: 'Mag ik het festivalterrein tussendags verlaten?',
+        faqLeaveAns: 'Nee, helaas is dat niet mogelijk. Om de veiligheid van alle bezoekers te kunnen waarborgen, kunnen we het niet toestaan dat het festivalterrein tussendags verlaten wordt.',
+        faqLockers: 'Zijn er lockers?',
+        faqLockersAns: 'Yes, deze zijn er! Op het terrein kun je medium & grote lockers huren.',
+        goldenGlu: 'Golden-GLU',
+        goldenGluText: 'Studenten van het GLU hebben tijdens het festival speciale privileges en zijn herkenbaar aan een gouden armbandje.<br>Met dit gouden armbandje kunnen ze tijdens het festival gebruik maken van de gouden toiletten en met goud gemarkeerde bestelpunten aan de bars zonder in een rij te hoeven staan.',
+        legend: 'Legenda',
+        zoomIn: 'Inzoomen',
+        zoomOut: 'Uitzoomen',
+        gps: 'Centreer op mijn locatie',
+        mapError: 'Kaartafbeelding kon niet laden.',
+        artistInfo: 'Artiest Info',
+        close: 'Sluiten',
+        welcome: 'Het ❤️U Festival is voor (nieuwe) studenten in de regio Utrecht en is een aanvulling op UIT.',
+        newsItems: [
+            { date: '2026-09-03', emoji: '🏅', title: 'Golden-GLU armbandjes ophalen', desc: 'GLU-studenten kunnen hun gouden armbandje ophalen bij de informatiebalie vanaf 11:00 op festivaldag. Vergeet je studentenpas niet!' },
+            { date: '2026-09-01', emoji: '🚌', title: 'Shuttlebus schema bijgewerkt', desc: 'De gratis shuttlebus rijdt nu ook vanaf station Leidsche Rijn. Vertrek elke 15 minuten tussen 11:00 en 19:00.' },
+            { date: '2026-08-28', emoji: '🎪', title: 'Nieuw podium aangekondigd!', desc: 'The Hangar is officieel toegevoegd aan het festivalterrein! Non-stop house, techno en dance van 10:00 tot middernacht.' }
+        ]
     },
     en: {
         home: 'Acts',
         info: 'Information',
         schedule: 'Schedule',
         map: 'Festival Map',
-        back: 'Back'
+        back: 'Back',
+        navHome: 'Home',
+        navInfo: 'Info',
+        navSchedule: 'Schedule',
+        navMap: 'Map',
+        daySat: 'Saturday',
+        daySun: 'Sunday',
+        location: 'Location',
+        time: 'Time',
+        news: 'News',
+        discoverArtists: 'Discover our artists. Click on an act for more info, biography and video.',
+        qrTitle: 'Scan QR Code',
+        qrSubtitle: 'Scan with your phone to open the app',
+        generalContact: 'General & Contact',
+        address: 'Address',
+        addressText: 'Location: Strijkviertel, Utrecht<br>Navigation address: Strijkviertelweg, Utrecht',
+        dateHours: 'Date & Opening Hours',
+        dateText: 'Saturday September 5, 2026 - 12:00 PM to 11:00 PM',
+        accessibility: 'Accessibility',
+        bike: 'Bike',
+        bikeText: 'There is a large free bike parking available where you can park your bike all day.',
+        car: 'Car',
+        carText: 'You can purchase a parking ticket. Parking is available at P+R Papendorp, follow the signs \'P online ticket\'. Don\'t have a ticket in advance? You can purchase one at the parking attendant on site (PIN ONLY). Note: FULL=FULL',
+        public: 'Public Transport',
+        publicText: 'Coming by public transport? Plan your trip via <a href="https://9292.nl/" target="_blank">9292.nl</a>',
+        shuttle: 'Shuttle Bus',
+        shuttleText: 'From Utrecht Central you can take our free shuttle bus to the festival grounds. You\'ll find this bus at the central station on Mineurslaan. Follow the white signs with black arrows and \'❤️U Festival\'.<br>The bus runs from 12:00 PM & 9:00 PM to the festival and from 9:00 PM you can board again towards the station.',
+        taxi: 'Taxi + Kiss & Ride',
+        taxiText: 'Navigate to Strijkviertel, De Meern (Utrecht). Follow the signs "Kiss & Ride ❤️U Festival" once you\'re near the festival grounds.',
+        lockers: 'Lockers',
+        lockersText: 'There are lockers on the festival grounds where you can safely store your belongings!<br>3 to 4 jackets fit inside. Good to know: you can open and close your locker as many times as you want throughout the day.<br>It is not possible to reserve a locker online.',
+        faq: 'FAQ',
+        faqMeds: 'I use medication. What now?',
+        faqMedsAns: 'It is allowed to bring medication in a dose that you need maximum for 1 day. A doctor\'s certificate/medication passport is required.<br>Security will review your documentation and check the medication. The medical staff may take your medication into custody.',
+        faqLeave: 'Can I leave the festival grounds during the event?',
+        faqLeaveAns: 'No, unfortunately that is not possible. In order to safeguard the safety of all visitors, we cannot allow the festival grounds to be left during the event.',
+        faqLockers: 'Are there lockers?',
+        faqLockersAns: 'Yes, there are! You can rent medium & large lockers on site.',
+        goldenGlu: 'Golden-GLU',
+        goldenGluText: 'GLU students have special privileges during the festival and are recognized by a golden wristband.<br>With this golden wristband, they can use the golden toilets and golden marked ordering points at the bars without having to stand in line.',
+        legend: 'Legend',
+        zoomIn: 'Zoom In',
+        zoomOut: 'Zoom Out',
+        gps: 'Center on my location',
+        mapError: 'Map image could not load.',
+        artistInfo: 'Artist Info',
+        close: 'Close',
+        welcome: 'The ❤️U Festival is for (new) students in the Utrecht region and is an addition to UIT.',
+        newsItems: [
+            { date: '2026-09-03', emoji: '🏅', title: 'Pick up Golden-GLU wristbands', desc: 'GLU students can pick up their golden wristbands at the info desk from 11:00 on festival day. Don\'t forget your student card!' },
+            { date: '2026-09-01', emoji: '🚌', title: 'Shuttle bus schedule updated', desc: 'The free shuttle bus now also runs from Leidsche Rijn station. Departure every 15 minutes between 11:00 and 19:00.' },
+            { date: '2026-08-28', emoji: '🎪', title: 'New stage announced!', desc: 'The Hangar has been officially added to the festival grounds! Non-stop house, techno and dance from 10:00 to midnight.' }
+        ]
     }
 };
 
@@ -95,6 +199,115 @@ function updateLanguage() {
     document.getElementById('t-map').textContent = translations[currentLang].map;
     document.getElementById('back-to-schedule').textContent = translations[currentLang].back;
     document.getElementById('back-to-home').textContent = translations[currentLang].back;
+
+    const navLabels = document.querySelectorAll('.nav-label');
+    if (navLabels.length >= 4) {
+        navLabels[0].textContent = translations[currentLang].navHome;
+        navLabels[1].textContent = translations[currentLang].navInfo;
+        navLabels[2].textContent = translations[currentLang].navSchedule;
+        navLabels[3].textContent = translations[currentLang].navMap;
+    }
+
+    const dayBtns = document.querySelectorAll('.day-btn');
+    dayBtns.forEach(btn => {
+        const txt = btn.textContent.trim();
+        if (txt === 'Zaterdag' || txt === 'Saturday') {
+            btn.textContent = translations[currentLang].daySat;
+        } else if (txt === 'Zondag' || txt === 'Sunday') {
+            btn.textContent = translations[currentLang].daySun;
+        }
+    });
+
+    const newsTitle = document.querySelector('.news-section-title');
+    if (newsTitle) newsTitle.textContent = translations[currentLang].news;
+
+    const pageIntro = document.querySelector('.page-intro');
+    if (pageIntro) pageIntro.textContent = translations[currentLang].discoverArtists;
+
+    // Translate welcome text on info page
+    const welcomeText = document.getElementById('info-welcome');
+    if (welcomeText) welcomeText.textContent = translations[currentLang].welcome;
+
+    // Translate news items on home page
+    const newsItems = document.querySelectorAll('.news-item');
+    translations[currentLang].newsItems.forEach((item, index) => {
+        const newsItem = newsItems[index];
+        if (newsItem) {
+            const dateEl = newsItem.querySelector('.news-date');
+            const contentEl = newsItem.querySelector('.news-content');
+            const descEl = newsItem.querySelector('.news-description');
+            if (dateEl) dateEl.textContent = item.date;
+            if (contentEl) contentEl.innerHTML = `<span class="news-emoji">${item.emoji}</span> ${item.title}`;
+            if (descEl) descEl.textContent = item.desc;
+        }
+    });
+
+    const qrTitle = document.querySelector('.qr-title');
+    if (qrTitle) qrTitle.textContent = translations[currentLang].qrTitle;
+
+    const qrSubtitle = document.querySelector('.qr-subtitle');
+    if (qrSubtitle) qrSubtitle.textContent = translations[currentLang].qrSubtitle;
+
+    const infoSummaries = document.querySelectorAll('#page-info summary');
+    infoSummaries.forEach(s => {
+        if (s.textContent.includes('Algemeen') || s.textContent.includes('General')) s.textContent = translations[currentLang].generalContact;
+        else if (s.textContent.includes('Bereikbaarheid') || s.textContent.includes('Accessibility')) s.textContent = translations[currentLang].accessibility;
+        else if (s.textContent.includes('Lockers')) s.textContent = translations[currentLang].lockers;
+        else if (s.textContent.includes('FAQ')) s.textContent = translations[currentLang].faq;
+        else if (s.textContent.includes('Golden-GLU')) s.textContent = translations[currentLang].goldenGlu;
+    });
+
+    const infoH4s = document.querySelectorAll('#page-info h4');
+    infoH4s.forEach(h4 => {
+        if (h4.textContent.includes('Adres') || h4.textContent.includes('Address')) h4.textContent = translations[currentLang].address;
+        else if (h4.textContent.includes('Datum') || h4.textContent.includes('Date')) h4.textContent = translations[currentLang].dateHours;
+        else if (h4.textContent.includes('Fiets') || h4.textContent.includes('Bike')) h4.textContent = translations[currentLang].bike;
+        else if (h4.textContent.includes('Auto') || h4.textContent.includes('Car')) h4.textContent = translations[currentLang].car;
+        else if (h4.textContent.includes('OV') || h4.textContent.includes('Public')) h4.textContent = translations[currentLang].public;
+        else if (h4.textContent.includes('Shuttlebus') || h4.textContent.includes('Shuttle')) h4.textContent = translations[currentLang].shuttle;
+        else if (h4.textContent.includes('Taxi')) h4.textContent = translations[currentLang].taxi;
+        else if (h4.id === 'info-h4-faq-meds') h4.textContent = translations[currentLang].faqMeds;
+        else if (h4.id === 'info-h4-faq-leave') h4.textContent = translations[currentLang].faqLeave;
+        else if (h4.id === 'info-h4-faq-lockers') h4.textContent = translations[currentLang].faqLockers;
+    });
+
+    const infoPs = document.querySelectorAll('#page-info .acc-content p');
+    infoPs.forEach(p => {
+        if (p.id === 'info-p-address') p.innerHTML = translations[currentLang].addressText;
+        else if (p.id === 'info-p-date') p.innerHTML = translations[currentLang].dateText;
+        else if (p.id === 'info-p-fiets') p.innerHTML = translations[currentLang].bikeText;
+        else if (p.id === 'info-p-auto') p.innerHTML = translations[currentLang].carText;
+        else if (p.id === 'info-p-ov') p.innerHTML = translations[currentLang].publicText;
+        else if (p.id === 'info-p-shuttle') p.innerHTML = translations[currentLang].shuttleText;
+        else if (p.id === 'info-p-taxi') p.innerHTML = translations[currentLang].taxiText;
+        else if (p.id === 'info-p-lockers') p.innerHTML = translations[currentLang].lockersText;
+        else if (p.id === 'info-p-faq-meds') p.innerHTML = translations[currentLang].faqMedsAns;
+        else if (p.id === 'info-p-faq-leave') p.innerHTML = translations[currentLang].faqLeaveAns;
+        else if (p.id === 'info-p-faq-lockers-ans') p.innerHTML = translations[currentLang].faqLockersAns;
+        else if (p.id === 'info-p-golden-glu-1') p.innerHTML = translations[currentLang].goldenGluText.split('<br>')[0];
+        else if (p.id === 'info-p-golden-glu-2') p.innerHTML = translations[currentLang].goldenGluText.split('<br>')[1] || '';
+    });
+
+    const mapLegendToggle = document.querySelector('.map-legend-toggle span:last-child');
+    if (mapLegendToggle) mapLegendToggle.textContent = translations[currentLang].legend;
+
+    const mapZoomLabels = document.querySelectorAll('#map-zoom-in, #map-zoom-out');
+    mapZoomLabels.forEach(btn => {
+        btn.setAttribute('aria-label', btn.id === 'map-zoom-in' ? translations[currentLang].zoomIn : translations[currentLang].zoomOut);
+    });
+
+    const mapGpsBtn = document.getElementById('map-gps-btn');
+    if (mapGpsBtn) mapGpsBtn.setAttribute('aria-label', translations[currentLang].gps);
+
+    const mapError = document.getElementById('map-load-error');
+    if (mapError) mapError.textContent = translations[currentLang].mapError;
+
+    const artistInfoTitle = document.querySelector('#page-artist-info .sec-title');
+    if (artistInfoTitle) artistInfoTitle.textContent = translations[currentLang].artistInfo;
+
+    const mapInfoClose = document.getElementById('map-info-close');
+    if (mapInfoClose) mapInfoClose.setAttribute('aria-label', translations[currentLang].close);
+
     renderArtistList();
     renderArtistDetail();
 }
@@ -106,10 +319,10 @@ langBtn.addEventListener('click', () => {
 
 // 4. GitHub-style festival map (interactive panel + zoom)
 const mapMarkers = [
-    { id: 'poton', title: 'Pôton', subtitle: 'Hoofdpodium', icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_stage1_ponton.svg', x: 60, y: 32, desc: 'Belangrijkste hoofdstage met de grootste acts van het festival.' },
-    { id: 'lake', title: 'The Lake', subtitle: 'Talent & chill', icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_stage1_ponton.svg', x: 26, y: 52, desc: 'Rustige locatie voor talent, talks en gezellige feestjes.' },
-    { id: 'food', title: 'Food & Drinks', subtitle: 'Eten & drank', icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_food.svg', x: 72, y: 68, desc: 'Diverse foodtrucks en drankstanden verspreid over het terrein.' },
-    { id: 'toilet', title: 'Toiletten', subtitle: 'Toilet & EHBO', icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_toilet.svg', x: 46, y: 78, desc: 'Toiletten en EHBO-punten op korte loopafstand.' }
+    { id: 'poton', title: { nl: 'Pôton', en: 'Pôton' }, subtitle: { nl: 'Hoofdpodium', en: 'Main Stage' }, icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_stage1_ponton.svg', x: 60, y: 32, desc: { nl: 'Belangrijkste hoofdstage met de grootste acts van het festival.', en: 'Main stage with the biggest acts of the festival.' } },
+    { id: 'lake', title: { nl: 'The Lake', en: 'The Lake' }, subtitle: { nl: 'Talent & chill', en: 'Talent & chill' }, icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_stage1_ponton.svg', x: 26, y: 52, desc: { nl: 'Rustige locatie voor talent, talks en gezellige feestjes.', en: 'Relaxed location for talent, talks and cozy parties.' } },
+    { id: 'food', title: { nl: 'Food & Drinks', en: 'Food & Drinks' }, subtitle: { nl: 'Eten & drank', en: 'Food & Drinks' }, icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_food.svg', x: 72, y: 68, desc: { nl: 'Diverse foodtrucks en drankstanden verspreid over het terrein.', en: 'Various food trucks and drink stands across the grounds.' } },
+    { id: 'toilet', title: { nl: 'Toiletten', en: 'Toilets' }, subtitle: { nl: 'Toilet & EHBO', en: 'Toilet & First Aid' }, icon: 'https://raw.githubusercontent.com/LarsM04/8.1---Module---U-Festival-App/main/assets/map/icons/marker_toilet.svg', x: 46, y: 78, desc: { nl: 'Toiletten en EHBO-punten op korte loopafstand.', en: 'Toilets and first aid points within walking distance.' } }
 ];
 
 let mapScale = 1;
@@ -127,9 +340,9 @@ function openMapInfo(marker) {
     const subtitle = document.getElementById('map-info-subtitle');
     const body = document.getElementById('map-info-body');
     if (!panel || !title || !subtitle || !body) return;
-    title.textContent = marker.title;
-    subtitle.textContent = marker.subtitle;
-    body.textContent = marker.desc;
+    title.textContent = typeof marker.title === 'object' ? marker.title[currentLang] : marker.title;
+    subtitle.textContent = typeof marker.subtitle === 'object' ? marker.subtitle[currentLang] : marker.subtitle;
+    body.textContent = typeof marker.desc === 'object' ? marker.desc[currentLang] : marker.desc;
     panel.classList.add('open');
     panel.setAttribute('aria-hidden', 'false');
 }
@@ -166,14 +379,15 @@ function initFestivalMapLite() {
         btn.className = 'map-marker';
         btn.style.left = `${marker.x}%`;
         btn.style.top = `${marker.y}%`;
-        btn.setAttribute('aria-label', marker.title);
+        const t = typeof marker.title === 'object' ? marker.title[currentLang] : marker.title;
+        btn.setAttribute('aria-label', t);
         btn.innerHTML = `<img src="${marker.icon}" alt="" />`;
         btn.addEventListener('click', () => openMapInfo(marker));
         content.appendChild(btn);
 
         const item = document.createElement('div');
         item.className = 'map-legend-item';
-        item.innerHTML = `<img src="${marker.icon}" alt="" /><span>${marker.title}</span>`;
+        item.innerHTML = `<img src="${marker.icon}" alt="" /><span>${t}</span>`;
         legend.appendChild(item);
     });
 
@@ -546,23 +760,23 @@ function timeToMinutes(timeStr) {
 }
 
 const artistDetails = {
-    'Armin van Buuren': { img: 'fotos/image.png', desc: 'Wereldberoemde DJ en producent, bekend om zijn energieke sets en epische trance tracks.' },
-    'Kensington': { img: 'fotos/image (2).png', desc: 'Nederlandse rockband die met hun emotionele nummers en krachtige optredens het publiek meesleuren.' },
-    'De Staat': { img: 'fotos/image (4).png', desc: 'Indrukwekkende rockband met energieke shows en een herkenbare sound.' },
-    'Navarone': { img: 'fotos/image (6).png', desc: 'Nederlands rockensemble met een unieke mix van alternatieve rock en melodische hooks.' },
-    'Dotan': { img: 'fotos/image (7).png', desc: 'Singer-songwriter bekend om zijn warme, meeslepende pop-folk nummers.' },
-    'Froukje': { img: 'fotos/image (9).png', desc: 'Popartieste met frisse energie en Nederlandstalige hits.' },
-    'Martin Garrix': { img: 'fotos/image (1).png', desc: 'Internationale top-DJ met grote dancehits en spectaculaire liveshows.' },
-    'Within Temptation': { img: 'fotos/image (3).png', desc: 'Symfonische metalband die grote podia weet te vullen met emotie en drama.' },
-    'Chef\'Special': { img: 'fotos/image (5).png', desc: 'Verrassende live band met een mix van pop, rock, hiphop en reggae.' },
-    'Eefje de Visser': { img: 'fotos/image (8).png', desc: 'Nederlands singer-songwriter met sfeervolle, gevoelige popmuziek.' },
-    'Spinvis': { img: 'fotos/image (10).png', desc: 'Poëtische singer-songwriter met unieke, verhalende songs.' },
-    'Talent set 1': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Talent set 2': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Talent set 3': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Talent set 4': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Talent set 5': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Talent set 6': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
+    'Armin van Buuren': { img: 'fotos/image.png', desc: { nl: 'Wereldberoemde DJ en producent, bekend om zijn energieke sets en epische trance tracks.', en: 'World-renowned DJ and producer, known for his energetic sets and epic trance tracks.' } },
+    'Kensington': { img: 'fotos/image (2).png', desc: { nl: 'Nederlandse rockband die met hun emotionele nummers en krachtige optredens het publiek meesleuren.', en: 'Dutch rock band that captivates audiences with their emotional songs and powerful performances.' } },
+    'De Staat': { img: 'fotos/image (4).png', desc: { nl: 'Indrukwekkende rockband met energieke shows en een herkenbare sound.', en: 'Impressive rock band with energetic shows and a recognizable sound.' } },
+    'Navarone': { img: 'fotos/image (6).png', desc: { nl: 'Nederlands rockensemble met een unieke mix van alternatieve rock en melodische hooks.', en: 'Dutch rock ensemble with a unique mix of alternative rock and melodic hooks.' } },
+    'Dotan': { img: 'fotos/image (7).png', desc: { nl: 'Singer-songwriter bekend om zijn warme, meeslepende pop-folk nummers.', en: 'Singer-songwriter known for his warm, captivating pop-folk songs.' } },
+    'Froukje': { img: 'fotos/image (9).png', desc: { nl: 'Popartieste met frisse energie en Nederlandstalige hits.', en: 'Pop artist with fresh energy and Dutch-language hits.' } },
+    'Martin Garrix': { img: 'fotos/image (1).png', desc: { nl: 'Internationale top-DJ met grote dancehits en spectaculaire liveshows.', en: 'International top DJ with major dance hits and spectacular live shows.' } },
+    'Within Temptation': { img: 'fotos/image (3).png', desc: { nl: 'Symfonische metalband die grote podia weet te vullen met emotie en drama.', en: 'Symphonic metal band that fills large stages with emotion and drama.' } },
+    'Chef\'Special': { img: 'fotos/image (5).png', desc: { nl: 'Verrassende live band met een mix van pop, rock, hiphop en reggae.', en: 'Surprising live band with a mix of pop, rock, hip-hop and reggae.' } },
+    'Eefje de Visser': { img: 'fotos/image (8).png', desc: { nl: 'Nederlands singer-songwriter met sfeervolle, gevoelige popmuziek.', en: 'Dutch singer-songwriter with atmospheric, sensitive pop music.' } },
+    'Spinvis': { img: 'fotos/image (10).png', desc: { nl: 'Poëtische singer-songwriter met unieke, verhalende songs.', en: 'Poetic singer-songwriter with unique, storytelling songs.' } },
+    'Talent set 1': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
+    'Talent set 2': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
+    'Talent set 3': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
+    'Talent set 4': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
+    'Talent set 5': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
+    'Talent set 6': { img: 'fotos/image (4).png', desc: { nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.', en: 'Emerging talent with a fresh sound and passion for live performance.' } },
     'Talent set 7': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
     'Comedy': { img: 'fotos/image (5).png', desc: 'Lachgarantie met een scherpe blik op het leven en onvergetelijke sketches.' },
     'Lecture': { img: 'fotos/image (5).png', desc: 'Inspirerende spreker die diepe gedachten deelt over actuele onderwerpen.' },
@@ -599,7 +813,7 @@ function initScheduleGrid() {
     
     const corner = document.createElement('div');
     corner.className = 'stage-header corner-sticky';
-    corner.textContent = 'Locatie';
+    corner.textContent = translations[currentLang].location;
     grid.appendChild(corner);
     
     timeSlots.forEach(time => {
@@ -656,8 +870,8 @@ function initScheduleGrid() {
                 const details = artistDetails[act.artist];
                 if (details) {
                     document.getElementById('artist-name-display').textContent = act.artist;
-                    document.getElementById('artist-stage').textContent = `Locatie: ${act.stage}`;
-                    document.getElementById('artist-time').textContent = `Tijd: ${act.start} - ${act.end}`;
+                    document.getElementById('artist-stage').textContent = `${translations[currentLang].location}: ${act.stage}`;
+                    document.getElementById('artist-time').textContent = `${translations[currentLang].time}: ${act.start} - ${act.end}`;
                     document.getElementById('artist-desc').textContent = details.desc;
                     document.getElementById('artist-img').src = details.img;
                 }
@@ -704,7 +918,7 @@ document.querySelectorAll('.day-btn').forEach(button => {
     button.addEventListener('click', () => {
         document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
-        activeDay = button.textContent.trim().toLowerCase();
+        activeDay = button.dataset.day;
         initScheduleGrid();
     });
 });

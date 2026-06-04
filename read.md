@@ -1,11 +1,14 @@
 LOGBOEK AI 
-GEMENI
+GEMENI KILO
 12 mei
 
 Maak een samenvatting van de opdracht
 Maak een kleine begin en hou de code simpel
 
-13 mei
+13 mei leg pwa uit
+
+14 mei check de spelling na van de verslag
+
 
 27 mei info panel uitbreider
 
@@ -20,3 +23,5 @@ Maak een kleine begin en hou de code simpel
 2 juni maak een nieuws sectie aan oven acts
 
 2 juni de dark mode funtie werkt niet bij de nieuws sectie kan je dat fixen met uitleg
+
+2 juni zorg dat de vertaal funtie goed werkt bij de homepage
