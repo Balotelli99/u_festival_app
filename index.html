@@ -19,13 +19,13 @@
     <input type="radio" name="nav" id="btn-map">
 
     <header class="main-header">
-        <a class="logo" href="#" aria-label=" Festival">
+        <a class="logo" href="#" aria-label="U Festival">
             <img src="fotos/logoBlack (1).png" alt="U Festival" class="logo-img">
             <span class="logo-text">FESTIVAL</span>
         </a>
         <div class="top-controls">
             <button id="theme-btn" aria-label="Schakel thema">🌙</button>
-            <button id="lang-btn" aria-label="Wijzig taal">
+            <button id="lang-btn" aria-label="Wijzig taal" title="Switch Language">
                 <img src="fotos/Flag_of_the_Netherlands.png" alt="Nederlands" class="lang-flag" id="lang-flag">
             </button>
         <button class="qr-btn" type="button" aria-label="QR code" id="qr-btn">QR</button>
@@ -35,8 +35,8 @@
 <div id="qr-modal" class="qr-modal" style="display:none;" aria-hidden="true">
     <div class="qr-modal-content">
         <span class="qr-close" id="qr-close">&times;</span>
-        <h3 class="qr-title">Scan de QR-code</h3>
-        <p class="qr-subtitle">Scan met je telefoon om de app te openen</p>
+        <h3 class="qr-title" data-i18n="qrTitle">Scan de QR-code</h3>
+        <p class="qr-subtitle" data-i18n="qrSubtitle">Scan met je telefoon om de app te openen</p>
         <div id="qrcode"></div>
         <p class="qr-url" id="qr-url"></p>
     </div>
@@ -45,8 +45,8 @@
     <main class="content-container">
 
         <section class="page" id="page-home">
-            <h1 class="sec-title" id="t-home"></h1>
-            <h2 class="news-section-title">Nieuws</h2>
+            <h1 class="sec-title" id="t-home" data-i18n="home"></h1>
+            <h2 class="news-section-title" data-i18n="news">Nieuws</h2>
             <div class="homepage-news">
                 <div class="news-item">
                     <div class="news-date">2026-09-03</div>
@@ -70,7 +70,7 @@
                     <div class="news-description" id="news-desc-3">The Hangar is officieel toegevoegd aan het festivalterrein! Non-stop house, techno en dance van 10:00 tot middernacht.</div>
                 </div>
             </div>
-            <p class="page-intro">Ontdek onze artiesten. Klik op een act voor meer informatie, een biografie en een video.</p>
+            <p class="page-intro" data-i18n="discoverArtists">Ontdek onze artiesten. Klik op een act voor meer informatie, een biografie en een video.</p>
             <div class="artist-list" id="artist-list"></div>
         </section>
 
@@ -86,55 +86,55 @@
             <div class="artist-video">
                 <iframe id="artist-detail-video" src="" title="Artist video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <button id="back-to-home" class="back-btn">Terug</button>
+            <button id="back-to-home" class="back-btn" data-i18n="back">Terug</button>
         </section>
 
         <section class="page" id="page-info">
-            <h1 class="sec-title" id="t-info">Informatie</h1>
+            <h1 class="sec-title" id="t-info" data-i18n="info">Informatie</h1>
             <details class="accordion">
-                <summary id="info-summary-general-contact">Algemeen & Contact</summary>
+                <summary id="info-summary-general-contact" data-i18n="generalContact">Algemeen & Contact</summary>
                 <div class="acc-content">
-                    <strong id="info-welcome">Het ❤️U Festival is voor (nieuwe) studenten in de regio Utrecht en is een aanvulling op UIT.</strong>
-                    <h4 id="info-h4-address">Adres</h4>
+                    <strong id="info-welcome" data-i18n="welcome">Het ❤️U Festival is voor (nieuwe) studenten in de regio Utrecht en is een aanvulling op UIT.</strong>
+                    <h4 id="info-h4-address" data-i18n="address">Adres</h4>
                     <p id="info-p-address">Locatie: Strijkviertel, Utrecht<br>Navigatieadres: Strijkviertelweg, Utrecht</p>
-                    <h4 id="info-h4-date">Datum & Openingstijden</h4>
+                    <h4 id="info-h4-date" data-i18n="dateHours">Datum & Openingstijden</h4>
                     <p id="info-p-date">Zaterdag 5 september 2026 - 12:00 tot 23:00 uur</p>
                 </div>
             </details>
             <details class="accordion">
-                <summary id="info-summary-bereikbaarheid">Bereikbaarheid</summary>
+                <summary id="info-summary-bereikbaarheid" data-i18n="accessibility">Bereikbaarheid</summary>
                 <div class="acc-content">
-                    <h4 id="info-h4-fiets">Fiets</h4>
+                    <h4 id="info-h4-fiets" data-i18n="bike">Fiets</h4>
                     <p id="info-p-fiets">Er is een grote gratis fietsenstalling aanwezig waar je jouw fiets de gehele dag kunt stallen.</p>
-                    <h4 id="info-h4-auto">Auto</h4>
+                    <h4 id="info-h4-auto" data-i18n="car">Auto</h4>
                     <p id="info-p-auto">Je kunt een parkingticket aanschaffen. Parkeren kan op P+R Papendorp, volg hiervoor de borden 'P online ticket'. Heb je geen ticket van te voren gekocht? Dan kun je bij de parkeerwachter op locatie een parkeerticket aanschaffen (PIN ONLY). Let wel op: VOL=VOL</p>
-                    <h4 id="info-h4-ov">OV</h4>
+                    <h4 id="info-h4-ov" data-i18n="public">OV</h4>
                     <p id="info-p-ov">Kom je met het openbaar vervoer naar Lief? Plan dan je trip via <a href="https://9292.nl/" target="_blank">9292.nl</a></p>
-                    <h4 id="info-h4-shuttle">Shuttlebus</h4>
+                    <h4 id="info-h4-shuttle" data-i18n="shuttle">Shuttlebus</h4>
                     <p id="info-p-shuttle">Vanaf Utrecht Centraal kun je onze gratis shuttlebus richting het festivalterrein pakken. Je vindt deze bus op het centraal station aan de Mineurslaan. Volg de witte bordjes met zwarte pijlen én ' ❤️U Festival'.<br>De bus rijdt tussen 12:00 uur & 19:00 uur richting het festival en vanaf 21:00 uur kun je weer instappen om richting het station te gaan.</p>
-                    <h4 id="info-h4-taxi">Taxi + Kiss & Ride</h4>
+                    <h4 id="info-h4-taxi" data-i18n="taxi">Taxi + Kiss & Ride</h4>
                     <p id="info-p-taxi">Navigeer naar Strijkviertel, De Meern (Utrecht). Volg de borden "Kiss & Ride ❤️U Festival", zodra je in de buurt bent van het festivalterrein.</p>
                 </div>
             </details>
             <details class="accordion">
-                <summary id="info-summary-lockers">Lockers</summary>
+                <summary id="info-summary-lockers" data-i18n="lockers">Lockers</summary>
                 <div class="acc-content">
                     <p id="info-p-lockers">Op het festivalterrein zijn kluisjes aanwezig waar je je spullen veilig kunt opbergen!<br>Hier passen 3 à 4 jassen in. Goed om te weten: je kunt je kluisje gedurende de hele dag openen en sluiten zo vaak je wilt.<br>Het is niet mogelijk om online een kluisje te reserveren.</p>
                 </div>
             </details>
             <details class="accordion">
-                <summary id="info-summary-faq">FAQ</summary>
+                <summary id="info-summary-faq" data-i18n="faq">FAQ</summary>
                 <div class="acc-content">
-                    <h4 id="info-h4-faq-meds">Ik gebruik medicatie. Wat nu?</h4>
+                    <h4 id="info-h4-faq-meds" data-i18n="faqMeds">Ik gebruik medicatie. Wat nu?</h4>
                     <p id="info-p-faq-meds">Het is toegestaan om medicijnen mee te nemen in een dosis die je maximaal nodig hebt op 1 dag. Een doktersverklaring/medicatiepaspoort is noodzakelijk.<br>De beveiliging zal jouw documentatie beoordelen en de medicijnen controleren. Het kan zijn dat de EHBO jouw medicijnen in bewaring neemt.</p>
-                    <h4 id="info-h4-faq-leave">Mag ik het festivalterrein tussentijds verlaten?</h4>
+                    <h4 id="info-h4-faq-leave" data-i18n="faqLeave">Mag ik het festivalterrein tussentijds verlaten?</h4>
                     <p id="info-p-faq-leave">Nee, helaas is dat niet mogelijk. Om de veiligheid van alle bezoekers te kunnen waarborgen, kunnen we het niet toestaan dat het festivalterrein tussentijds verlaten wordt.</p>
-                    <h4 id="info-h4-faq-lockers">Zijn er lockers?</h4>
+                    <h4 id="info-h4-faq-lockers" data-i18n="faqLockers">Zijn er lockers?</h4>
                     <p id="info-p-faq-lockers-ans">Yes, deze zijn er! Op het terrein kun je medium & grote lockers huren.</p>
                 </div>
             </details>
             <details class="accordion">
-                <summary id="info-summary-golden-glu">Golden-GLU</summary>
+                <summary id="info-summary-golden-glu" data-i18n="goldenGlu">Golden-GLU</summary>
                 <div class="acc-content">
                     <p id="info-p-golden-glu-1">Studenten van het GLU hebben tijdens het festival speciale privileges en zijn herkenbaar aan een gouden armbandje.</p>
                     <p id="info-p-golden-glu-2">Met dit gouden armbandje kunnen ze tijdens het festival gebruik maken van de gouden toiletten en met goud gemarkeerde bestelpunten aan de bars zonder in een rij te hoeven staan.</p>
@@ -143,11 +143,11 @@
         </section>
 
         <section class="page" id="page-schedule">
-             <h1 class="sec-title" id="t-sched">Programma</h1>
+             <h1 class="sec-title" id="t-sched" data-i18n="schedule">Programma</h1>
              
              <div class="day-switcher">
-                  <button class="day-btn active" data-day="zaterdag">Zaterdag</button>
-                  <button class="day-btn" data-day="zondag">Zondag</button>
+                  <button class="day-btn active" data-day="zaterdag" data-i18n="daySat">Zaterdag</button>
+                  <button class="day-btn" data-day="zondag" data-i18n="daySun">Zondag</button>
              </div>
 
              <div class="schedule-grid-container">
@@ -156,7 +156,7 @@
         </section>
 
         <section class="page" id="page-artist-info" style="display:none;">
-            <h1 class="sec-title">Artiest Info</h1>
+            <h1 class="sec-title" data-i18n="artistInfo">Artiest Info</h1>
             <div class="news-block">
                 <img src="" alt="" id="artist-img" class="news-img">
             </div>
@@ -166,11 +166,11 @@
                 <p id="artist-time"></p>
                 <p id="artist-desc"></p>
             </div>
-            <button id="back-to-schedule" class="back-btn">Terug</button>
+            <button id="back-to-schedule" class="back-btn" data-i18n="back">Terug</button>
         </section>
 
         <section class="page" id="page-map">
-            <h1 class="sec-title" id="t-map">Plattegrond</h1>
+            <h1 class="sec-title" id="t-map" data-i18n="map">Plattegrond</h1>
             <div class="map-box" id="map-box">
                 <div class="map-viewport" id="map-viewport">
                     <div class="map-drag-surface" id="map-drag-surface" aria-hidden="true"></div>
@@ -190,7 +190,7 @@
                 <div class="map-legend" id="map-legend">
                     <button type="button" class="map-legend-toggle" id="map-legend-toggle">
                         <span class="legend-icon">🗺️</span>
-                        <span>Legenda</span>
+                        <span data-i18n="legend">Legenda</span>
                     </button>
                     <div class="map-legend-items" id="map-legend-items"></div>
                 </div>
@@ -206,10 +206,10 @@
     </main>
 
     <nav class="bottom-nav">
-        <label for="btn-home"><span class="nav-icon material-symbols-outlined">home</span><span class="nav-label">Home</span></label>
-        <label for="btn-info"><span class="nav-icon material-symbols-outlined">info</span><span class="nav-label">Info</span></label>
-        <label for="btn-schedule"><span class="nav-icon material-symbols-outlined">music_note</span><span class="nav-label">Programma</span></label>
-        <label for="btn-map"><span class="nav-icon material-symbols-outlined">location_on</span><span class="nav-label">Kaart</span></label>
+        <label for="btn-home"><span class="nav-icon material-symbols-outlined">home</span><span class="nav-label" data-i18n="navHome">Home</span></label>
+        <label for="btn-info"><span class="nav-icon material-symbols-outlined">info</span><span class="nav-label" data-i18n="navInfo">Info</span></label>
+        <label for="btn-schedule"><span class="nav-icon material-symbols-outlined">music_note</span><span class="nav-label" data-i18n="navSchedule">Programma</span></label>
+        <label for="btn-map"><span class="nav-icon material-symbols-outlined">location_on</span><span class="nav-label" data-i18n="navMap">Kaart</span></label>
     </nav>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>

@@ -121,7 +121,8 @@ const translations = {
         newsContent2: '🚌 Shuttlebus schema bijgewerkt',
         newsDesc2: 'De gratis shuttlebus rijdt nu ook vanaf station Leidsche Rijn. Vertrek elke 15 minuten tussen 11:00 en 19:00.',
         newsContent3: '🎪 Nieuw podium aangekondigd!',
-        newsDesc3: 'The Hangar is officieel toegevoegd aan het festivalterrein! Non-stop house, techno en dance van 10:00 tot middernacht.'
+        newsDesc3: 'The Hangar is officieel toegevoegd aan het festivalterrein! Non-stop house, techno en dance van 10:00 tot middernacht.',
+        welcome: 'Het ❤️U Festival is voor (nieuwe) studenten in de regio Utrecht en is een aanvulling op UIT.'
     },
     en: {
         home: 'Acts',
@@ -180,7 +181,8 @@ const translations = {
         newsContent2: '🚌 Shuttle bus schedule updated',
         newsDesc2: 'The free shuttle bus now also runs from station Leidsche Rijn. Departures every 15 minutes between 11:00 and 19:00.',
         newsContent3: '🎪 New stage announced!',
-        newsDesc3: 'The Hangar has officially been added to the festival grounds! Non-stop house, techno and dance from 10:00 to midnight.'
+        newsDesc3: 'The Hangar has officially been added to the festival grounds! Non-stop house, techno and dance from 10:00 to midnight.',
+        welcome: 'The ❤️U Festival is for (new) students in the Utrecht region and is an addition to the UIT.'
     }
 };
 
@@ -193,34 +195,19 @@ function updateLanguage() {
         flag.src = 'fotos/uk-flag-1444045.jpg';
         flag.alt = 'Engels';
     }
-    document.getElementById('t-home').textContent = translations[currentLang].home;
-    document.getElementById('t-info').textContent = translations[currentLang].info;
-    document.getElementById('t-sched').textContent = translations[currentLang].schedule;
-    document.getElementById('t-map').textContent = translations[currentLang].map;
-    document.getElementById('back-to-schedule').textContent = translations[currentLang].back;
-    document.getElementById('back-to-home').textContent = translations[currentLang].back;
 
-    const navLabels = document.querySelectorAll('.nav-label');
-    if (navLabels.length >= 4) {
-        navLabels[0].textContent = translations[currentLang].navHome;
-        navLabels[1].textContent = translations[currentLang].navInfo;
-        navLabels[2].textContent = translations[currentLang].navSchedule;
-        navLabels[3].textContent = translations[currentLang].navMap;
-    }
+    // Update HTML lang attribute
+    document.documentElement.lang = currentLang;
 
-    const dayBtns = document.querySelectorAll('.day-btn');
-    dayBtns.forEach(btn => {
-        const txt = btn.textContent.trim();
-        if (txt === 'Zaterdag' || txt === 'Saturday') {
-            btn.textContent = translations[currentLang].daySat;
-        } else if (txt === 'Zondag' || txt === 'Sunday') {
-            btn.textContent = translations[currentLang].daySun;
+    // Update elements with data-i18n attribute
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+            el.innerHTML = translations[currentLang][key];
         }
     });
 
-    const newsTitle = document.querySelector('.news-section-title');
-    if (newsTitle) newsTitle.textContent = translations[currentLang].news;
-
+    // Update news items
     for (let i = 1; i <= 3; i++) {
         const contentEl = document.getElementById(`news-content-${i}`);
         const descEl = document.getElementById(`news-desc-${i}`);
@@ -228,38 +215,7 @@ function updateLanguage() {
         if (descEl) descEl.textContent = translations[currentLang][`newsDesc${i}`];
     }
 
-    const pageIntro = document.querySelector('.page-intro');
-    if (pageIntro) pageIntro.textContent = translations[currentLang].discoverArtists;
-
-    const qrTitle = document.querySelector('.qr-title');
-    if (qrTitle) qrTitle.textContent = translations[currentLang].qrTitle;
-
-    const qrSubtitle = document.querySelector('.qr-subtitle');
-    if (qrSubtitle) qrSubtitle.textContent = translations[currentLang].qrSubtitle;
-
-    const infoSummaries = document.querySelectorAll('#page-info summary');
-    infoSummaries.forEach(s => {
-        if (s.textContent.includes('Algemeen') || s.textContent.includes('General')) s.textContent = translations[currentLang].generalContact;
-        else if (s.textContent.includes('Bereikbaarheid') || s.textContent.includes('Accessibility')) s.textContent = translations[currentLang].accessibility;
-        else if (s.textContent.includes('Lockers')) s.textContent = translations[currentLang].lockers;
-        else if (s.textContent.includes('FAQ')) s.textContent = translations[currentLang].faq;
-        else if (s.textContent.includes('Golden-GLU')) s.textContent = translations[currentLang].goldenGlu;
-    });
-
-    const infoH4s = document.querySelectorAll('#page-info h4');
-    infoH4s.forEach(h4 => {
-        if (h4.textContent.includes('Adres') || h4.textContent.includes('Address')) h4.textContent = translations[currentLang].address;
-        else if (h4.textContent.includes('Datum') || h4.textContent.includes('Date')) h4.textContent = translations[currentLang].dateHours;
-        else if (h4.textContent.includes('Fiets') || h4.textContent.includes('Bike')) h4.textContent = translations[currentLang].bike;
-        else if (h4.textContent.includes('Auto') || h4.textContent.includes('Car')) h4.textContent = translations[currentLang].car;
-        else if (h4.textContent.includes('OV') || h4.textContent.includes('Public')) h4.textContent = translations[currentLang].public;
-        else if (h4.textContent.includes('Shuttlebus') || h4.textContent.includes('Shuttle')) h4.textContent = translations[currentLang].shuttle;
-        else if (h4.textContent.includes('Taxi')) h4.textContent = translations[currentLang].taxi;
-        else if (h4.id === 'info-h4-faq-meds') h4.textContent = translations[currentLang].faqMeds;
-        else if (h4.id === 'info-h4-faq-leave') h4.textContent = translations[currentLang].faqLeave;
-        else if (h4.id === 'info-h4-faq-lockers') h4.textContent = translations[currentLang].faqLockers;
-    });
-
+    // Update Info page specific items
     const infoPs = document.querySelectorAll('#page-info .acc-content p');
     infoPs.forEach(p => {
         if (p.id === 'info-p-address') p.innerHTML = translations[currentLang].addressText;
@@ -277,9 +233,6 @@ function updateLanguage() {
         else if (p.id === 'info-p-golden-glu-2') p.innerHTML = translations[currentLang].goldenGluText.split('<br>')[1] || '';
     });
 
-    const mapLegendToggle = document.querySelector('.map-legend-toggle span:last-child');
-    if (mapLegendToggle) mapLegendToggle.textContent = translations[currentLang].legend;
-
     const mapZoomLabels = document.querySelectorAll('#map-zoom-in, #map-zoom-out');
     mapZoomLabels.forEach(btn => {
         btn.setAttribute('aria-label', btn.id === 'map-zoom-in' ? translations[currentLang].zoomIn : translations[currentLang].zoomOut);
@@ -291,14 +244,14 @@ function updateLanguage() {
     const mapError = document.getElementById('map-load-error');
     if (mapError) mapError.textContent = translations[currentLang].mapError;
 
-    const artistInfoTitle = document.querySelector('#page-artist-info .sec-title');
-    if (artistInfoTitle) artistInfoTitle.textContent = translations[currentLang].artistInfo;
-
     const mapInfoClose = document.getElementById('map-info-close');
     if (mapInfoClose) mapInfoClose.setAttribute('aria-label', translations[currentLang].close);
 
     renderArtistList();
     renderArtistDetail();
+    if (document.getElementById('btn-schedule')?.checked) {
+        initScheduleGrid();
+    }
 }
 
 langBtn.addEventListener('click', () => {
@@ -749,39 +702,237 @@ function timeToMinutes(timeStr) {
 }
 
 const artistDetails = {
-    'Armin van Buuren': { img: 'fotos/image.png', desc: 'Wereldberoemde DJ en producent, bekend om zijn energieke sets en epische trance tracks.' },
-    'Kensington': { img: 'fotos/image (2).png', desc: 'Nederlandse rockband die met hun emotionele nummers en krachtige optredens het publiek meesleuren.' },
-    'De Staat': { img: 'fotos/image (4).png', desc: 'Indrukwekkende rockband met energieke shows en een herkenbare sound.' },
-    'Navarone': { img: 'fotos/image (6).png', desc: 'Nederlands rockensemble met een unieke mix van alternatieve rock en melodische hooks.' },
-    'Dotan': { img: 'fotos/image (7).png', desc: 'Singer-songwriter bekend om zijn warme, meeslepende pop-folk nummers.' },
-    'Froukje': { img: 'fotos/image (9).png', desc: 'Popartieste met frisse energie en Nederlandstalige hits.' },
-    'Martin Garrix': { img: 'fotos/image (1).png', desc: 'Internationale top-DJ met grote dancehits en spectaculaire liveshows.' },
-    'Within Temptation': { img: 'fotos/image (3).png', desc: 'Symfonische metalband die grote podia weet te vullen met emotie en drama.' },
-    'Chef\'Special': { img: 'fotos/image (5).png', desc: 'Verrassende live band met een mix van pop, rock, hiphop en reggae.' },
-    'Eefje de Visser': { img: 'fotos/image (8).png', desc: 'Nederlands singer-songwriter met sfeervolle, gevoelige popmuziek.' },
-    'Spinvis': { img: 'fotos/image (10).png', desc: 'Poëtische singer-songwriter met unieke, verhalende songs.' },
-    'Talent set 1': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Talent set 2': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Talent set 3': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Talent set 4': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Talent set 5': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Talent set 6': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Talent set 7': { img: 'fotos/image (4).png', desc: 'Opkomend talent met een frisse geluid en passie voor live optreden.' },
-    'Comedy': { img: 'fotos/image (5).png', desc: 'Lachgarantie met een scherpe blik op het leven en onvergetelijke sketches.' },
-    'Lecture': { img: 'fotos/image (5).png', desc: 'Inspirerende spreker die diepe gedachten deelt over actuele onderwerpen.' },
-    'Theater': { img: 'fotos/image (5).png', desc: 'Indrukwekkend theater dat je meeneemt naar een wereld van verbeelding en emotie.' },
-    'Movie': { img: 'fotos/image (5).png', desc: 'Een filmvertoning op het festival met een speciale sfeer en grote scherm.' },
-    'Performance': { img: 'fotos/image (5).png', desc: 'Een unieke podiumshow met artiesten en verrassende acts.' },
-    'Illusionist': { img: 'fotos/image (5).png', desc: 'Magic en illusie die je blijven verbazen.' },
-    'Magic Show': { img: 'fotos/image (5).png', desc: 'Een magische show vol illusionisme en theater.' },
-    'DJ set 1': { img: 'fotos/image (1).png', desc: 'Een energieke DJ-set met verschillende hits en beats.' },
-    'DJ set 2': { img: 'fotos/image (2).png', desc: 'Een DJ-set met dynamische festivalmuziek en dansbare klanken.' },
-    'DJ set 3': { img: 'fotos/image (3).png', desc: 'Een DJ-set vol house, techno en feelgood vibes.' },
-    'DJ set 4': { img: 'fotos/image (4).png', desc: 'Een DJ-set met sfeervolle beats voor de avond.' },
-    'DJ set 5': { img: 'fotos/image (4).png', desc: 'Een DJ-set met energie en dansmuziek.' },
-    'DJ set 6': { img: 'fotos/image (4).png', desc: 'Een DJ-set met clubklassiekers en moderne tracks.' },
-    'DJ set 7': { img: 'fotos/image (4).png', desc: 'Een DJ-set met euforische festivalhits.' },
-    'DJ set 8': { img: 'fotos/image (4).png', desc: 'Een DJ-set die de avond afsluit met knallende muziek.' }
+    'Armin van Buuren': { 
+        img: 'fotos/image.png', 
+        desc: {
+            nl: 'Wereldberoemde DJ en producent, bekend om zijn energieke sets en epische trance tracks.',
+            en: 'World-famous DJ and producer, known for his energy sets and epic trance tracks.'
+        }
+    },
+    'Kensington': { 
+        img: 'fotos/image (2).png', 
+        desc: {
+            nl: 'Nederlandse rockband die met hun emotionele nummers en krachtige optredens het publiek meesleuren.',
+            en: 'Dutch rock band that sweep the audience away with their emotional songs and powerful performances.'
+        }
+    },
+    'De Staat': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Indrukwekkende rockband met energieke shows en een herkenbare sound.',
+            en: 'Impressive rock band with energetic shows and a recognizable sound.'
+        }
+    },
+    'Navarone': { 
+        img: 'fotos/image (6).png', 
+        desc: {
+            nl: 'Nederlands rockensemble met een unieke mix van alternatieve rock en melodische hooks.',
+            en: 'Dutch rock ensemble with a unique mix of alternative rock and melodic hooks.'
+        }
+    },
+    'Dotan': { 
+        img: 'fotos/image (7).png', 
+        desc: {
+            nl: 'Singer-songwriter bekend om zijn warme, meeslepende pop-folk nummers.',
+            en: 'Singer-songwriter known for his warm, immersive pop-folk songs.'
+        }
+    },
+    'Froukje': { 
+        img: 'fotos/image (9).png', 
+        desc: {
+            nl: 'Popartieste met frisse energie en Nederlandstalige hits.',
+            en: 'Pop artist with fresh energy and Dutch-language hits.'
+        }
+    },
+    'Martin Garrix': { 
+        img: 'fotos/image (1).png', 
+        desc: {
+            nl: 'Internationale top-DJ met grote dancehits en spectaculaire liveshows.',
+            en: 'International top DJ with major dance hits and spectacular live shows.'
+        }
+    },
+    'Within Temptation': { 
+        img: 'fotos/image (3).png', 
+        desc: {
+            nl: 'Symfonische metalband die grote podia weet te vullen met emotie en drama.',
+            en: 'Symphonic metal band that knows how to fill large stages with emotion and drama.'
+        }
+    },
+    'Chef\'Special': { 
+        img: 'fotos/image (5).png', 
+        desc: {
+            nl: 'Verrassende live band met een mix van pop, rock, hiphop en reggae.',
+            en: 'Surprising live band with a mix of pop, rock, hip hop and reggae.'
+        }
+    },
+    'Eefje de Visser': { 
+        img: 'fotos/image (8).png', 
+        desc: {
+            nl: 'Nederlands singer-songwriter met sfeervolle, gevoelige popmuziek.',
+            en: 'Dutch singer-songwriter with atmospheric, sensitive pop music.'
+        }
+    },
+    'Spinvis': { 
+        img: 'fotos/image (10).png', 
+        desc: {
+            nl: 'Poëtische singer-songwriter met unieke, verhalende songs.',
+            en: 'Poetic singer-songwriter with unique, narrative songs.'
+        }
+    },
+    'Talent set 1': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.',
+            en: 'Emerging talent with a fresh sound and passion for live performance.'
+        }
+    },
+    'Talent set 2': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.',
+            en: 'Emerging talent with a fresh sound and passion for live performance.'
+        }
+    },
+    'Talent set 3': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.',
+            en: 'Emerging talent with a fresh sound and passion for live performance.'
+        }
+    },
+    'Talent set 4': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.',
+            en: 'Emerging talent with a fresh sound and passion for live performance.'
+        }
+    },
+    'Talent set 5': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.',
+            en: 'Emerging talent with a fresh sound and passion for live performance.'
+        }
+    },
+    'Talent set 6': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.',
+            en: 'Emerging talent with a fresh sound and passion for live performance.'
+        }
+    },
+    'Talent set 7': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Opkomend talent met een frisse geluid en passie voor live optreden.',
+            en: 'Emerging talent with a fresh sound and passion for live performance.'
+        }
+    },
+    'Comedy': { 
+        img: 'fotos/image (5).png', 
+        desc: {
+            nl: 'Lachgarantie met een scherpe blik op het leven en onvergetelijke sketches.',
+            en: 'Guaranteed laughs with a sharp look at life and unforgettable sketches.'
+        }
+    },
+    'Lecture': { 
+        img: 'fotos/image (5).png', 
+        desc: {
+            nl: 'Inspirerende spreker die diepe gedachten deelt over actuele onderwerpen.',
+            en: 'Inspiring speaker sharing deep thoughts on current topics.'
+        }
+    },
+    'Theater': { 
+        img: 'fotos/image (5).png', 
+        desc: {
+            nl: 'Indrukwekkend theater dat je meeneemt naar een wereld van verbeelding en emotie.',
+            en: 'Impressive theater that takes you to a world of imagination and emotion.'
+        }
+    },
+    'Movie': { 
+        img: 'fotos/image (5).png', 
+        desc: {
+            nl: 'Een filmvertoning op het festival met een speciale sfeer en grote scherm.',
+            en: 'A film screening at the festival with a special atmosphere and large screen.'
+        }
+    },
+    'Performance': { 
+        img: 'fotos/image (5).png', 
+        desc: {
+            nl: 'Een unieke podiumshow met artiesten en verrassende acts.',
+            en: 'A unique stage show with artists and surprising acts.'
+        }
+    },
+    'Illusionist': { 
+        img: 'fotos/image (5).png', 
+        desc: {
+            nl: 'Magic en illusie die je blijven verbazen.',
+            en: 'Magic and illusion that will keep you amazed.'
+        }
+    },
+    'Magic Show': { 
+        img: 'fotos/image (5).png', 
+        desc: {
+            nl: 'Een magische show vol illusionisme en theater.',
+            en: 'A magical show full of illusionism and theater.'
+        }
+    },
+    'DJ set 1': { 
+        img: 'fotos/image (1).png', 
+        desc: {
+            nl: 'Een energieke DJ-set met verschillende hits en beats.',
+            en: 'An energetic DJ set with various hits and beats.'
+        }
+    },
+    'DJ set 2': { 
+        img: 'fotos/image (2).png', 
+        desc: {
+            nl: 'Een DJ-set met dynamische festivalmuziek en dansbare klanken.',
+            en: 'A DJ set with dynamic festival music and danceable sounds.'
+        }
+    },
+    'DJ set 3': { 
+        img: 'fotos/image (3).png', 
+        desc: {
+            nl: 'Een DJ-set vol house, techno en feelgood vibes.',
+            en: 'A DJ set full of house, techno and feel-good vibes.'
+        }
+    },
+    'DJ set 4': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Een DJ-set met sfeervolle beats voor de avond.',
+            en: 'A DJ set with atmospheric beats for the evening.'
+        }
+    },
+    'DJ set 5': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Een DJ-set met energie en dansmuziek.',
+            en: 'A DJ set with energy and dance music.'
+        }
+    },
+    'DJ set 6': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Een DJ-set met clubklassiekers en moderne tracks.',
+            en: 'A DJ set with club classics and modern tracks.'
+        }
+    },
+    'DJ set 7': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Een DJ-set met euforische festivalhits.',
+            en: 'A DJ set with euphoric festival hits.'
+        }
+    },
+    'DJ set 8': { 
+        img: 'fotos/image (4).png', 
+        desc: {
+            nl: 'Een DJ-set die de avond afsluit met knallende muziek.',
+            en: 'A DJ set that closes the evening with banging music.'
+        }
+    }
 };
 
 let activeDay = 'zaterdag';
@@ -861,7 +1012,7 @@ function initScheduleGrid() {
                     document.getElementById('artist-name-display').textContent = act.artist;
                     document.getElementById('artist-stage').textContent = `${translations[currentLang].location}: ${act.stage}`;
                     document.getElementById('artist-time').textContent = `${translations[currentLang].time}: ${act.start} - ${act.end}`;
-                    document.getElementById('artist-desc').textContent = details.desc;
+                    document.getElementById('artist-desc').textContent = typeof details.desc === 'object' ? details.desc[currentLang] : details.desc;
                     document.getElementById('artist-img').src = details.img;
                 }
                 document.getElementById('page-schedule').style.display = 'none';
