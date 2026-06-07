@@ -18,23 +18,29 @@ const qrcodeDiv = document.getElementById('qrcode');
 const qrUrlEl = document.getElementById('qr-url');
 
 function openQR() {
-    const appUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'index.html';
+    let currentUrl = window.location.href;
 
-    const isLocal = appUrl.includes('localhost') || appUrl.includes('127.0.0.1') || appUrl.startsWith('file://');
-    const inputUrl = prompt('Voer de live URL van je app in (bijv. https<strong>:</strong>//jouw-app.onrender.com/index.html):', isLocal ? '' : appUrl);
-
-    if (!inputUrl || !inputUrl.trim()) {
-        alert('Voer eerst een geldige live URL in om de QR-code te genereren.');
-        return;
+    // Als we lokaal draaien, vraag dan om een URL of geef de optie om het huidige (lokale) IP in te voeren.
+    const isLocal = currentUrl.includes('localhost') || currentUrl.includes('127.0.0.1') || currentUrl.startsWith('file://');
+    
+    if (isLocal) {
+        const inputUrl = prompt(
+            'Je draait de app lokaal. Je telefoon kan geen localhost openen.\n\nVoer je netwerk IP of live URL in (bijv. http://192.168.x.x:5500 of https://jouw-app.onrender.com):', 
+            currentUrl
+        );
+        
+        if (!inputUrl || !inputUrl.trim()) return; // Geannuleerd
+        currentUrl = inputUrl.trim();
     }
 
     if (!qrModal) return;
     qrModal.style.display = 'flex';
     qrModal.setAttribute('aria-hidden', 'false');
     qrcodeDiv.innerHTML = '';
-    qrUrlEl.textContent = inputUrl.trim();
+    qrUrlEl.textContent = currentUrl;
+    
     new QRCode(qrcodeDiv, {
-        text: inputUrl.trim(),
+        text: currentUrl,
         width: 220,
         height: 220,
         colorDark: '#000000',
@@ -602,6 +608,8 @@ function showArtistDetail(artistKey) {
 updateLanguage();
 
 document.getElementById('back-to-schedule').addEventListener('click', () => {
+    const videoEl = document.getElementById('artist-info-video');
+    if (videoEl) videoEl.src = '';
     document.getElementById('page-artist-info').style.display = 'none';
     document.getElementById('page-schedule').style.display = 'block';
 });
@@ -1014,6 +1022,25 @@ function initScheduleGrid() {
                     document.getElementById('artist-time').textContent = `${translations[currentLang].time}: ${act.start} - ${act.end}`;
                     document.getElementById('artist-desc').textContent = typeof details.desc === 'object' ? details.desc[currentLang] : details.desc;
                     document.getElementById('artist-img').src = details.img;
+                    
+                    // Zoek of we een video hebben in de hoofd artistsData
+                    let vid = '';
+                    const mainArtistKey = Object.keys(artistsData).find(k => artistsData[k].title === act.artist);
+                    if (mainArtistKey && artistsData[mainArtistKey].video) {
+                        vid = artistsData[mainArtistKey].video;
+                    }
+                    
+                    const videoContainer = document.getElementById('artist-info-video-container');
+                    const videoEl = document.getElementById('artist-info-video');
+                    if (videoContainer && videoEl) {
+                        if (vid) {
+                            videoEl.src = vid;
+                            videoContainer.style.display = 'block';
+                        } else {
+                            videoEl.src = '';
+                            videoContainer.style.display = 'none';
+                        }
+                    }
                 }
                 document.getElementById('page-schedule').style.display = 'none';
                 document.getElementById('page-artist-info').style.display = 'block';
