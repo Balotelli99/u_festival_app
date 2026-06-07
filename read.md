@@ -27,3 +27,5 @@ Maak een kleine begin en hou de code simpel
 2 juni zorg dat de vertaal funtie goed werkt bij de homepage
 
 4 juni fix the bugs voor vertaling
+
+7 juni fix the cashe op telefoon werkt de vertaling niet
